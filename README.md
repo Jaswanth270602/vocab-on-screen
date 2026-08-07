@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vocab Daily
 
-## Getting Started
+A mobile-first PWA that shows **one shared vocabulary word per day** — meaning, Latin/Greek root, root meaning, and an example sentence.
 
-First, run the development server:
+Deploy on [Vercel](https://vercel.com), open on your phone, then **Add to Home Screen**.
+
+## Features
+
+- 50 words grouped by root (`spect`, `port`, `dict`, …)
+- Same word for everyone each UTC day
+- Card UI + browse-by-root
+- Installable PWA (standalone)
+
+> Note: real moveable lock/home-screen *widgets* need a native app. This ships the web/PWA version you can test on Vercel first.
+
+## Local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy to Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Push this folder to GitHub, or from the project directory run:
 
-## Learn More
+```bash
+npx vercel
+```
 
-To learn more about Next.js, take a look at the following resources:
+2. On your phone, open the Vercel URL in Safari (iOS) or Chrome (Android).
+3. Install:
+   - **iOS:** Share → Add to Home Screen
+   - **Android:** Menu → Install app / Add to Home screen
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How the daily word works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Day index is derived from UTC date starting `2026-01-01`, then modulo 50, so every user sees the same card that day.
