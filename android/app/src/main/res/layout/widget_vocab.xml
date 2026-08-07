@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Keep this layout RemoteViews-safe:
-  - only LinearLayout + TextView
-  - no <View> spacers, no custom fonts, no layer-list, no custom views
+  RemoteViews-safe only: LinearLayout + TextView.
+  No <View> spacers, no custom fonts, no layer-lists.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_widget_coast"
-    android:gravity="center_vertical"
+    android:gravity="top"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingStart="14dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="14dp"
+    android:paddingBottom="12dp">
 
+    <!-- Date up high + count chip -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
@@ -25,16 +29,22 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="#3A5F7A"
-            android:textSize="12sp" />
+            android:textColor="#5B6B78"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/widget_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_count_chip"
             android:maxLines="1"
+            android:paddingStart="9dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="3dp"
             android:textColor="#1E88C8"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -42,51 +52,96 @@
         android:id="@+id/widget_eyebrow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
+        android:letterSpacing="0.16"
         android:text="@string/widget_eyebrow"
         android:textAllCaps="true"
         android:textColor="#1E88C8"
-        android:textSize="10sp" />
+        android:textSize="9sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/widget_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="1dp"
         android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:letterSpacing="-0.01"
         android:maxLines="2"
-        android:textColor="#12344F"
-        android:textSize="28sp"
+        android:textColor="#102A40"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/widget_meaning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:textColor="#3A5F7A"
+        android:textColor="#3E5568"
         android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/widget_etymology"
+    <!-- Root block: grey panel + vertical accent bar -->
+    <LinearLayout
+        android:id="@+id/widget_root_block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textColor="#1E88C8"
-        android:textSize="13sp"
-        android:textStyle="italic" />
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_root_panel_filled"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingTop="9dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="9dp">
+
+        <TextView
+            android:id="@+id/widget_root_bar"
+            android:layout_width="3dp"
+            android:layout_height="34dp"
+            android:background="@drawable/bg_root_bar" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/widget_root_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.12"
+                android:text="@string/widget_root_caption"
+                android:textAllCaps="true"
+                android:textColor="#7A8691"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/widget_etymology"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="#1E88C8"
+                android:textSize="13sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/widget_example"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="11dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:textColor="#3A5F7A"
-        android:textSize="12sp" />
+        android:textColor="#5C6F7E"
+        android:textSize="12sp"
+        android:textStyle="italic" />
 </LinearLayout>
