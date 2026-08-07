@@ -14,31 +14,39 @@ object VocabWidgetViews {
 
     fun content(
         context: Context,
-        options: Bundle? = null,
+        @Suppress("UNUSED_PARAMETER") options: Bundle? = null,
     ): RemoteViews {
         return try {
             val theme = ThemePrefs.get(context)
             val today = DailyWord.today(context)
-            val minHeight = options?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, 0) ?: 0
-            val layout = theme.layoutForHeightDp(minHeight)
             val word = today.word
+            val ink = ThemePrefs.color(context, theme.ink)
+            val inkSoft = ThemePrefs.color(context, theme.inkSoft)
+            val accent = ThemePrefs.color(context, theme.accent)
 
-            RemoteViews(context.packageName, layout).apply {
+            RemoteViews(context.packageName, R.layout.widget_vocab).apply {
+                setInt(R.id.widget_root, "setBackgroundResource", theme.widgetBackground)
                 setTextViewText(R.id.widget_day, today.dayLabel)
                 setTextViewText(R.id.widget_count, today.dayNumber)
+                setTextViewText(R.id.widget_eyebrow, context.getString(R.string.widget_eyebrow))
                 setTextViewText(R.id.widget_word, word.word)
                 setTextViewText(R.id.widget_meaning, word.meaning)
                 setTextViewText(R.id.widget_etymology, "${word.root} · ${word.rootMeaning}")
                 setTextViewText(R.id.widget_example, "“${word.example}”")
+
+                setTextColor(R.id.widget_day, inkSoft)
+                setTextColor(R.id.widget_count, accent)
+                setTextColor(R.id.widget_eyebrow, accent)
+                setTextColor(R.id.widget_word, ink)
+                setTextColor(R.id.widget_meaning, inkSoft)
+                setTextColor(R.id.widget_etymology, accent)
+                setTextColor(R.id.widget_example, inkSoft)
+
                 setOnClickPendingIntent(R.id.widget_root, openAppPendingIntent(context))
             }
         } catch (t: Throwable) {
             Log.e(TAG, "Failed to build widget views", t)
-            // Ultra-simple fallback so the host never shows "Can't load widget"
-            RemoteViews(context.packageName, R.layout.widget_fallback).apply {
-                setTextViewText(R.id.fallback_text, "Vocab Daily\nTap to open")
-                setOnClickPendingIntent(R.id.fallback_root, openAppPendingIntent(context))
-            }
+            fallback(context)
         }
     }
 
@@ -50,13 +58,7 @@ object VocabWidgetViews {
                 manager.updateAppWidget(id, content(context, options))
             } catch (t: Throwable) {
                 Log.e(TAG, "Failed to update widget $id", t)
-                manager.updateAppWidget(
-                    id,
-                    RemoteViews(context.packageName, R.layout.widget_fallback).apply {
-                        setTextViewText(R.id.fallback_text, "Vocab Daily\nTap to open")
-                        setOnClickPendingIntent(R.id.fallback_root, openAppPendingIntent(context))
-                    },
-                )
+                manager.updateAppWidget(id, fallback(context))
             }
         }
     }
@@ -66,6 +68,13 @@ object VocabWidgetViews {
         val ids = manager.getAppWidgetIds(ComponentName(context, VocabWidgetProvider::class.java))
         if (ids.isNotEmpty()) {
             push(context, ids)
+        }
+    }
+
+    private fun fallback(context: Context): RemoteViews {
+        return RemoteViews(context.packageName, R.layout.widget_fallback).apply {
+            setTextViewText(R.id.fallback_text, "Vocab Daily\nOpen app · Refresh widget")
+            setOnClickPendingIntent(R.id.fallback_root, openAppPendingIntent(context))
         }
     }
 

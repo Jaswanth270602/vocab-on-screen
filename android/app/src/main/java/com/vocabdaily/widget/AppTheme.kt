@@ -1,13 +1,13 @@
 package com.vocabdaily.widget
 
 import android.content.Context
+import androidx.core.content.ContextCompat
 
 enum class AppTheme(
     val id: String,
     val title: String,
     val subtitle: String,
-    val widgetLayout: Int,
-    val widgetLayoutCompact: Int,
+    val widgetBackground: Int,
     val cardBackground: Int,
     val pageBg: Int,
     val titleColor: Int,
@@ -23,8 +23,7 @@ enum class AppTheme(
         id = "grove",
         title = "Grove",
         subtitle = "Soft glass green · clean sans",
-        widgetLayout = R.layout.widget_theme_grove,
-        widgetLayoutCompact = R.layout.widget_theme_grove_compact,
+        widgetBackground = R.drawable.bg_widget_grove,
         cardBackground = R.drawable.bg_card_grove,
         pageBg = R.color.grove_page,
         titleColor = R.color.grove_fog,
@@ -40,8 +39,7 @@ enum class AppTheme(
         id = "ink",
         title = "Ink",
         subtitle = "Glass paper · literary serif",
-        widgetLayout = R.layout.widget_theme_ink,
-        widgetLayoutCompact = R.layout.widget_theme_ink_compact,
+        widgetBackground = R.drawable.bg_widget_ink,
         cardBackground = R.drawable.bg_card_ink,
         pageBg = R.color.ink_page,
         titleColor = R.color.ink_fog,
@@ -57,8 +55,7 @@ enum class AppTheme(
         id = "coast",
         title = "Coast",
         subtitle = "Sky glass · wallpaper shows through",
-        widgetLayout = R.layout.widget_theme_coast,
-        widgetLayoutCompact = R.layout.widget_theme_coast_compact,
+        widgetBackground = R.drawable.bg_widget_coast,
         cardBackground = R.drawable.bg_card_coast,
         pageBg = R.color.coast_page,
         titleColor = R.color.coast_fog,
@@ -71,17 +68,7 @@ enum class AppTheme(
         bodyFont = R.font.dm_sans_regular,
     );
 
-    fun layoutForHeightDp(minHeightDp: Int): Int =
-        if (minHeightDp > 0 && minHeightDp < COMPACT_MAX_HEIGHT_DP) {
-            widgetLayoutCompact
-        } else {
-            widgetLayout
-        }
-
     companion object {
-        /** Below this height (dp), use the compact card layout. */
-        const val COMPACT_MAX_HEIGHT_DP = 140
-
         fun fromId(id: String?): AppTheme =
             entries.firstOrNull { it.id == id } ?: COAST
     }
@@ -103,4 +90,7 @@ object ThemePrefs {
             .putString(KEY_THEME, theme.id)
             .apply()
     }
+
+    fun color(context: Context, colorRes: Int): Int =
+        ContextCompat.getColor(context, colorRes)
 }

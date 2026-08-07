@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 
 class VocabWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(
@@ -11,7 +12,19 @@ class VocabWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray,
     ) {
-        VocabWidgetViews.push(context, appWidgetIds)
+        try {
+            VocabWidgetViews.push(context, appWidgetIds)
+        } catch (t: Throwable) {
+            Log.e("VocabWidgetProvider", "onUpdate failed", t)
+        }
+    }
+
+    override fun onEnabled(context: Context) {
+        try {
+            VocabWidgetViews.pushAll(context)
+        } catch (t: Throwable) {
+            Log.e("VocabWidgetProvider", "onEnabled failed", t)
+        }
     }
 
     override fun onAppWidgetOptionsChanged(
@@ -20,9 +33,13 @@ class VocabWidgetProvider : AppWidgetProvider() {
         appWidgetId: Int,
         newOptions: Bundle,
     ) {
-        appWidgetManager.updateAppWidget(
-            appWidgetId,
-            VocabWidgetViews.content(context, newOptions),
-        )
+        try {
+            appWidgetManager.updateAppWidget(
+                appWidgetId,
+                VocabWidgetViews.content(context, newOptions),
+            )
+        } catch (t: Throwable) {
+            Log.e("VocabWidgetProvider", "onAppWidgetOptionsChanged failed", t)
+        }
     }
 }
