@@ -16,7 +16,7 @@ object VocabWidgetViews {
             setTextViewText(R.id.widget_count, today.dayNumber)
             setTextViewText(R.id.widget_word, word.word)
             setTextViewText(R.id.widget_meaning, word.meaning)
-            setTextViewText(R.id.widget_root, "${word.root} · ${word.rootMeaning}")
+            setTextViewText(R.id.widget_etymology, "${word.root} · ${word.rootMeaning}")
             setTextViewText(R.id.widget_example, "“${word.example}”")
             setOnClickPendingIntent(R.id.widget_root, openAppPendingIntent(context))
         }
