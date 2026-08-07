@@ -1,8 +1,3 @@
-Here are your requested **1200 vocabulary words** for the app.
-
-I've placed **200 of the most frequently asked SSC CGL words** right at the top (IDs 51–250) for easy prioritization. The original 50 words are kept, and the list is expanded to 1200 total with additional high-frequency words.
-
-```kotlin
 package com.vocabdaily.widget
 
 /**
@@ -79,51 +74,51 @@ object VocabData {
     // Source: SSC CGL Previous Year Papers (2018-2025) & High-Frequency Word Lists
     // Based on analysis of repeated patterns from PW.live, PrepGrind, VocabSprint, etc.
 
-    VocabWord(51, "abate", "to reduce in intensity or amount", "bat", "to beat", "The storm began to abate by evening."), // [6†L17]
-    VocabWord(52, "abandon", "to give up completely", "ban", "to proclaim", "The crew had to abandon the sinking ship."), // [8†L33]
-    VocabWord(53, "abridge", "to shorten without losing meaning", "bridg", "to shorten", "The publisher asked the author to abridge the novel."), // [8†L35]
-    VocabWord(54, "abrogate", "to repeal or do away with a law", "rog", "to ask", "The government decided to abrogate the outdated treaty."), // [7†L27]
-    VocabWord(55, "absolve", "to free from blame or guilt", "solv", "to loosen", "The new evidence helped absolve the innocent man."), // [0†L12]
-    VocabWord(56, "abstain", "to refrain from doing something", "stain", "to hold", "Doctors advised him to abstain from alcohol."), // [0†L?]
-    VocabWord(57, "acclaim", "enthusiastic approval or praise", "claim", "to shout", "The actor received widespread acclaim for his performance."), // [8†L36]
-    VocabWord(58, "acrimonious", "angry and bitter in tone", "acri", "sharp", "The debate turned acrimonious very quickly."), // [9†L23]
-    VocabWord(59, "acumen", "ability to make good judgments", "acu", "sharp", "Her business acumen helped the company grow."), // [7†L28]
-    VocabWord(60, "adhere", "to stick to or follow", "her", "to stick", "You must adhere to the rules of the organization."), // [0†L12]
-    VocabWord(61, "admonish", "to warn or reprimand firmly", "mon", "to warn", "The teacher had to admonish the students for talking."), // [8†L37]
-    VocabWord(62, "adversary", "an opponent or enemy", "vers", "to turn", "The two politicians have been adversaries for years."), // [2†L9]
-    VocabWord(63, "adversity", "misfortune or hardship", "vers", "to turn", "He showed great courage in the face of adversity."), // [7†L29]
-    VocabWord(64, "affluent", "having a great deal of money", "flu", "to flow", "They live in an affluent neighborhood."), // [8†L38]
-    VocabWord(65, "alleviate", "to make pain or suffering less severe", "lev", "to lighten", "The medicine helped alleviate her back pain."), // [8†L39]
-    VocabWord(66, "altruistic", "unselfish concern for others", "alter", "other", "Her altruistic work has helped thousands of children."), // [2†L25]
-    VocabWord(67, "ameliorate", "to make something better", "melior", "better", "The new policy will ameliorate working conditions."), // [9†L19]
-    VocabWord(68, "amiable", "friendly and pleasant", "am", "to love", "Everyone likes her because she is so amiable."), // [8†L40]
-    VocabWord(69, "anguish", "severe mental or physical pain", "ang", "to choke", "He cried out in anguish after hearing the news."), // [8†L41]
-    VocabWord(70, "ardent", "very enthusiastic or passionate", "ard", "to burn", "She is an ardent supporter of the cause."), // [8†L42]
-    VocabWord(71, "audacious", "showing willingness to take bold risks", "audac", "bold", "The audacious plan surprised everyone."), // [8†L43]
+    VocabWord(51, "abate", "to reduce in intensity or amount", "bat", "to beat", "The storm began to abate by evening."), // [6â€ L17]
+    VocabWord(52, "abandon", "to give up completely", "ban", "to proclaim", "The crew had to abandon the sinking ship."), // [8â€ L33]
+    VocabWord(53, "abridge", "to shorten without losing meaning", "bridg", "to shorten", "The publisher asked the author to abridge the novel."), // [8â€ L35]
+    VocabWord(54, "abrogate", "to repeal or do away with a law", "rog", "to ask", "The government decided to abrogate the outdated treaty."), // [7â€ L27]
+    VocabWord(55, "absolve", "to free from blame or guilt", "solv", "to loosen", "The new evidence helped absolve the innocent man."), // [0â€ L12]
+    VocabWord(56, "abstain", "to refrain from doing something", "stain", "to hold", "Doctors advised him to abstain from alcohol."), // [0â€ L?]
+    VocabWord(57, "acclaim", "enthusiastic approval or praise", "claim", "to shout", "The actor received widespread acclaim for his performance."), // [8â€ L36]
+    VocabWord(58, "acrimonious", "angry and bitter in tone", "acri", "sharp", "The debate turned acrimonious very quickly."), // [9â€ L23]
+    VocabWord(59, "acumen", "ability to make good judgments", "acu", "sharp", "Her business acumen helped the company grow."), // [7â€ L28]
+    VocabWord(60, "adhere", "to stick to or follow", "her", "to stick", "You must adhere to the rules of the organization."), // [0â€ L12]
+    VocabWord(61, "admonish", "to warn or reprimand firmly", "mon", "to warn", "The teacher had to admonish the students for talking."), // [8â€ L37]
+    VocabWord(62, "adversary", "an opponent or enemy", "vers", "to turn", "The two politicians have been adversaries for years."), // [2â€ L9]
+    VocabWord(63, "adversity", "misfortune or hardship", "vers", "to turn", "He showed great courage in the face of adversity."), // [7â€ L29]
+    VocabWord(64, "affluent", "having a great deal of money", "flu", "to flow", "They live in an affluent neighborhood."), // [8â€ L38]
+    VocabWord(65, "alleviate", "to make pain or suffering less severe", "lev", "to lighten", "The medicine helped alleviate her back pain."), // [8â€ L39]
+    VocabWord(66, "altruistic", "unselfish concern for others", "alter", "other", "Her altruistic work has helped thousands of children."), // [2â€ L25]
+    VocabWord(67, "ameliorate", "to make something better", "melior", "better", "The new policy will ameliorate working conditions."), // [9â€ L19]
+    VocabWord(68, "amiable", "friendly and pleasant", "am", "to love", "Everyone likes her because she is so amiable."), // [8â€ L40]
+    VocabWord(69, "anguish", "severe mental or physical pain", "ang", "to choke", "He cried out in anguish after hearing the news."), // [8â€ L41]
+    VocabWord(70, "ardent", "very enthusiastic or passionate", "ard", "to burn", "She is an ardent supporter of the cause."), // [8â€ L42]
+    VocabWord(71, "audacious", "showing willingness to take bold risks", "audac", "bold", "The audacious plan surprised everyone."), // [8â€ L43]
     VocabWord(72, "augment", "to make something greater by adding to it", "aug", "to increase", "He took a second job to augment his income."),
-    VocabWord(73, "auspicious", "favorable or promising success", "auspic", "to observe", "It was an auspicious start to the new year."), // [9†L32]
+    VocabWord(73, "auspicious", "favorable or promising success", "auspic", "to observe", "It was an auspicious start to the new year."), // [9â€ L32]
     VocabWord(74, "barbaric", "savagely cruel or brutal", "barbar", "foreign", "The dictator's rule was barbaric and oppressive."),
-    VocabWord(75, "bellicose", "aggressive and warlike", "bell", "war", "His bellicose rhetoric alarmed the diplomats."), // [9†L27]
-    VocabWord(76, "belligerent", "hostile and aggressive", "bell", "war", "The belligerent nations refused to negotiate."), // [3†L29]
-    VocabWord(77, "benevolent", "well-meaning and kindly", "bene", "good", "The benevolent donor funded the new hospital."), // [6†L18]
+    VocabWord(75, "bellicose", "aggressive and warlike", "bell", "war", "His bellicose rhetoric alarmed the diplomats."), // [9â€ L27]
+    VocabWord(76, "belligerent", "hostile and aggressive", "bell", "war", "The belligerent nations refused to negotiate."), // [3â€ L29]
+    VocabWord(77, "benevolent", "well-meaning and kindly", "bene", "good", "The benevolent donor funded the new hospital."), // [6â€ L18]
     VocabWord(78, "benign", "gentle; not harmful", "bene", "good", "The tumor was found to be benign."),
     VocabWord(79, "boisterous", "noisy and full of energy", "boist", "rough", "The boisterous crowd cheered loudly."),
-    VocabWord(80, "cacophony", "a harsh mixture of sounds", "caco", "bad", "The cacophony of car horns was deafening."), // [7†L44]
-    VocabWord(81, "candid", "truthful and straightforward", "cand", "to glow", "She gave a candid account of her experience."), // [6†L19]
-    VocabWord(82, "capricious", "impulsive and unpredictable", "capric", "goat", "The weather is capricious in spring."), // [13†L8]
+    VocabWord(80, "cacophony", "a harsh mixture of sounds", "caco", "bad", "The cacophony of car horns was deafening."), // [7â€ L44]
+    VocabWord(81, "candid", "truthful and straightforward", "cand", "to glow", "She gave a candid account of her experience."), // [6â€ L19]
+    VocabWord(82, "capricious", "impulsive and unpredictable", "capric", "goat", "The weather is capricious in spring."), // [13â€ L8]
     VocabWord(83, "censure", "strong disapproval", "cens", "to judge", "The senator faced public censure for his actions."),
     VocabWord(84, "charlatan", "a person falsely claiming to have special knowledge", "char", "to chat", "The charlatan was exposed by the investigators."),
     VocabWord(85, "circumspect", "cautious and careful", "circum", "around", "He was circumspect in his dealings with the client."),
-    VocabWord(86, "clandestine", "done secretly or kept secret", "clandest", "secret", "The agents had a clandestine meeting."), // [9†L27]
+    VocabWord(86, "clandestine", "done secretly or kept secret", "clandest", "secret", "The agents had a clandestine meeting."), // [9â€ L27]
     VocabWord(87, "coercion", "the practice of persuading someone to do something by force", "erc", "to confine", "The confession was obtained through coercion."),
     VocabWord(88, "cogent", "clear and persuasive", "cog", "to drive", "She presented a cogent argument in favor of the proposal."),
     VocabWord(89, "commend", "to praise formally", "mend", "to entrust", "The judge commended the officer for her bravery."),
     VocabWord(90, "compelling", "evoking interest or attention", "pell", "to drive", "The documentary made a compelling case for reform."),
-    VocabWord(91, "conciliate", "to reconcile or settle a dispute", "cili", "to call", "The mediator helped conciliate the two parties."), // [7†L31]
-    VocabWord(92, "concur", "to agree with someone", "cur", "to run", "I concur with your assessment of the situation."), // [10†L26]
+    VocabWord(91, "conciliate", "to reconcile or settle a dispute", "cili", "to call", "The mediator helped conciliate the two parties."), // [7â€ L31]
+    VocabWord(92, "concur", "to agree with someone", "cur", "to run", "I concur with your assessment of the situation."), // [10â€ L26]
     VocabWord(93, "condone", "to accept or allow behavior that is considered wrong", "don", "to give", "The school does not condone bullying."),
-    VocabWord(94, "conducive", "helpful in producing a good result", "duc", "to lead", "A quiet environment is conducive to studying."), // [10†L24]
-    VocabWord(95, "confederation", "an alliance or union", "feder", "to trust", "The confederation of states was formed for mutual defense."), // [10†L20]
+    VocabWord(94, "conducive", "helpful in producing a good result", "duc", "to lead", "A quiet environment is conducive to studying."), // [10â€ L24]
+    VocabWord(95, "confederation", "an alliance or union", "feder", "to trust", "The confederation of states was formed for mutual defense."), // [10â€ L20]
     VocabWord(96, "conjecture", "an opinion based on incomplete information", "ject", "to throw", "His theory was pure conjecture."),
     VocabWord(97, "consequential", "important; having significant results", "sequ", "to follow", "The decision was consequential for the company's future."),
     VocabWord(98, "conspicuous", "clearly visible or obvious", "spic", "to look", "He made a conspicuous effort to help."),
@@ -135,17 +130,17 @@ object VocabData {
     VocabWord(104, "copious", "abundant in supply", "copi", "plenty", "She took copious notes during the lecture."),
     VocabWord(105, "corroborate", "to confirm or support with evidence", "robor", "to strengthen", "The witness was able to corroborate his story."),
     VocabWord(106, "craven", "contemptibly lacking in courage", "crav", "to beg", "His craven behavior disappointed his friends."),
-    VocabWord(107, "dauntless", "fearless and determined", "daunt", "to tame", "The dauntless explorer crossed the desert alone."), // [6†L20]
+    VocabWord(107, "dauntless", "fearless and determined", "daunt", "to tame", "The dauntless explorer crossed the desert alone."), // [6â€ L20]
     VocabWord(108, "dearth", "a scarcity or lack of something", "deart", "costly", "There is a dearth of affordable housing."),
     VocabWord(109, "debacle", "a sudden and complete failure", "de", "down", "The project ended in a financial debacle."),
     VocabWord(110, "deference", "humble submission and respect", "fer", "to carry", "They showed deference to their elders."),
     VocabWord(111, "delineate", "to describe or portray precisely", "line", "line", "The report delineates the steps we need to take."),
-    VocabWord(112, "denounce", "to publicly declare to be wrong", "nunc", "to proclaim", "The opposition party denounced the new law."), // [7†L44]
+    VocabWord(112, "denounce", "to publicly declare to be wrong", "nunc", "to proclaim", "The opposition party denounced the new law."), // [7â€ L44]
     VocabWord(113, "deplore", "to feel or express strong disapproval", "plor", "to weep", "We deplore the use of violence."),
     VocabWord(114, "despondent", "in low spirits from loss of hope", "spond", "to promise", "He became despondent after losing his job."),
     VocabWord(115, "deter", "to discourage from doing something", "terr", "to frighten", "The high cost should not deter you from applying."),
-    VocabWord(116, "dexterous", "skilled with one's hands or mind", "dexter", "right hand", "The dexterous craftsman carved the statue."), // [10†L22]
-    VocabWord(117, "diligent", "hardworking and careful", "dilig", "to choose", "A diligent student will succeed."), // [2†L8]
+    VocabWord(116, "dexterous", "skilled with one's hands or mind", "dexter", "right hand", "The dexterous craftsman carved the statue."), // [10â€ L22]
+    VocabWord(117, "diligent", "hardworking and careful", "dilig", "to choose", "A diligent student will succeed."), // [2â€ L8]
     VocabWord(118, "diminish", "to make or become less", "min", "small", "Her patience began to diminish."),
     VocabWord(119, "discern", "to perceive clearly", "cern", "to sift", "It was difficult to discern his true intentions."),
     VocabWord(120, "disdain", "the feeling of contempt", "dain", "worthy", "He looked at the offer with disdain."),
@@ -154,16 +149,16 @@ object VocabData {
     VocabWord(123, "dissonance", "a lack of harmony", "son", "sound", "The dissonance between the two accounts was troubling."),
     VocabWord(124, "dormant", "in a state of rest or inactivity", "dorm", "to sleep", "The volcano has been dormant for many years."),
     VocabWord(125, "eclectic", "deriving ideas from a broad range of sources", "eclec", "to choose", "She has an eclectic taste in music."),
-    VocabWord(126, "efficacious", "effective in producing a desired result", "fac", "to make", "The treatment proved to be efficacious."), // [6†L22]
+    VocabWord(126, "efficacious", "effective in producing a desired result", "fac", "to make", "The treatment proved to be efficacious."), // [6â€ L22]
     VocabWord(127, "elicit", "to draw out a response", "lic", "to entice", "The question was designed to elicit a confession."),
-    VocabWord(128, "eloquent", "fluent or persuasive in speaking or writing", "loqu", "to speak", "The president gave an eloquent speech."), // [11†L13]
-    VocabWord(129, "elude", "to escape from or avoid", "lud", "to play", "The criminal continues to elude the police."), // [7†L32]
+    VocabWord(128, "eloquent", "fluent or persuasive in speaking or writing", "loqu", "to speak", "The president gave an eloquent speech."), // [11â€ L13]
+    VocabWord(129, "elude", "to escape from or avoid", "lud", "to play", "The criminal continues to elude the police."), // [7â€ L32]
     VocabWord(130, "embezzle", "to steal money in one's trust", "bezzle", "to waste", "The accountant was found guilty of embezzling funds."),
     VocabWord(131, "eminent", "well-known and respected", "min", "to project", "She is an eminent scientist in her field."),
     VocabWord(132, "enervate", "to drain of energy", "nerv", "sinew", "The heat began to enervate the hikers."),
     VocabWord(133, "engender", "to cause or give rise to", "gen", "to produce", "The new policy could engender resentment."),
-    VocabWord(134, "enormous", "very large in size or quantity", "norm", "rule", "The elephant is an enormous animal."), // [2†L10]
-    VocabWord(135, "ephemeral", "lasting for a short time", "hemer", "day", "Fashion trends are often ephemeral."), // [7†L45]
+    VocabWord(134, "enormous", "very large in size or quantity", "norm", "rule", "The elephant is an enormous animal."), // [2â€ L10]
+    VocabWord(135, "ephemeral", "lasting for a short time", "hemer", "day", "Fashion trends are often ephemeral."), // [7â€ L45]
     VocabWord(136, "equanimity", "calmness under stress", "equ", "equal", "She faced the crisis with equanimity."),
     VocabWord(137, "equivocate", "to use ambiguous language", "voc", "to call", "The politician tried to equivocate on the issue."),
     VocabWord(138, "erudite", "having great knowledge", "rud", "rough", "The professor was an erudite scholar."),
@@ -182,39 +177,39 @@ object VocabData {
     VocabWord(151, "fallacious", "based on a mistaken belief", "fall", "to deceive", "His argument was fallacious."),
     VocabWord(152, "fastidious", "very attentive to detail", "fast", "fixed", "She is fastidious about her appearance."),
     VocabWord(153, "fatuous", "silly and pointless", "fatu", "foolish", "His fatuous comments were ignored."),
-    VocabWord(154, "fervent", "having or displaying a passionate intensity", "ferv", "to boil", "She is a fervent supporter of the cause."), // [2†L21]
-    VocabWord(155, "fidelity", "loyalty or faithfulness", "fid", "faith", "He showed great fidelity to his ideals."), // [7†L32]
-    VocabWord(156, "florid", "very flowery in style", "flor", "flower", "His florid prose was hard to read."), // [1†L24]
+    VocabWord(154, "fervent", "having or displaying a passionate intensity", "ferv", "to boil", "She is a fervent supporter of the cause."), // [2â€ L21]
+    VocabWord(155, "fidelity", "loyalty or faithfulness", "fid", "faith", "He showed great fidelity to his ideals."), // [7â€ L32]
+    VocabWord(156, "florid", "very flowery in style", "flor", "flower", "His florid prose was hard to read."), // [1â€ L24]
     VocabWord(157, "flout", "to openly disregard", "flout", "to mock", "He flouted the rules without any concern."),
-    VocabWord(158, "frugal", "sparing or economical", "frug", "fruit", "She leads a frugal lifestyle."), // [6†L23]
+    VocabWord(158, "frugal", "sparing or economical", "frug", "fruit", "She leads a frugal lifestyle."), // [6â€ L23]
     VocabWord(159, "gaffe", "an embarrassing mistake", "gaffe", "blunder", "The politician made a major gaffe during the interview."),
-    VocabWord(160, "garrulous", "excessively talkative", "garr", "to chatter", "The garrulous old man told long stories."), // [6†L25]
+    VocabWord(160, "garrulous", "excessively talkative", "garr", "to chatter", "The garrulous old man told long stories."), // [6â€ L25]
     VocabWord(161, "germane", "relevant to a subject under consideration", "germ", "sprout", "Her comment was not germane to the discussion."),
     VocabWord(162, "gluttony", "excessive eating", "glut", "to swallow", "Gluttony is considered one of the seven deadly sins."),
-    VocabWord(163, "guile", "cunning or deceit", "guile", "trick", "He used guile to get what he wanted."), // [14†L7]
-    VocabWord(164, "harbinger", "a person or thing that announces the approach of another", "harb", "shelter", "The robin is a harbinger of spring."), // [6†L26]
+    VocabWord(163, "guile", "cunning or deceit", "guile", "trick", "He used guile to get what he wanted."), // [14â€ L7]
+    VocabWord(164, "harbinger", "a person or thing that announces the approach of another", "harb", "shelter", "The robin is a harbinger of spring."), // [6â€ L26]
     VocabWord(165, "haughty", "arrogantly superior", "haught", "high", "She gave him a haughty look."),
     VocabWord(166, "hedonism", "the pursuit of pleasure", "hedon", "pleasure", "His lifestyle was one of pure hedonism."),
     VocabWord(167, "heretic", "a person who holds beliefs contrary to the orthodox", "here", "to choose", "He was considered a heretic by the church."),
     VocabWord(168, "hiatus", "a pause or gap", "hi", "to gape", "The show went on a hiatus."),
     VocabWord(169, "hinder", "to obstruct or delay", "hinder", "behind", "The bad weather hindered their progress."),
     VocabWord(170, "hubris", "excessive pride or self-confidence", "hubr", "outrage", "His hubris led to his downfall."),
-    VocabWord(171, "hypocrisy", "the practice of claiming to have higher standards than is the case", "hypo", "under", "His hypocrisy was exposed by the media."), // [3†L15]
+    VocabWord(171, "hypocrisy", "the practice of claiming to have higher standards than is the case", "hypo", "under", "His hypocrisy was exposed by the media."), // [3â€ L15]
     VocabWord(172, "iconoclast", "a person who attacks cherished beliefs", "icon", "image", "He was an iconoclast who challenged tradition."),
     VocabWord(173, "idiosyncrasy", "a distinctive or peculiar characteristic", "idio", "own", "Her idiosyncrasy was wearing odd socks."),
     VocabWord(174, "ignominy", "public shame or disgrace", "gnomin", "name", "He suffered the ignominy of defeat."),
     VocabWord(175, "illicit", "forbidden by law or custom", "lic", "permitted", "He was caught in an illicit affair."),
-    VocabWord(176, "immaculate", "perfectly clean or flawless", "macul", "spot", "The house was immaculate."), // [2†L11]
+    VocabWord(176, "immaculate", "perfectly clean or flawless", "macul", "spot", "The house was immaculate."), // [2â€ L11]
     VocabWord(177, "imminent", "about to happen", "min", "to project", "The storm is imminent."),
     VocabWord(178, "impartial", "treating all equally", "part", "part", "The judge must be impartial."),
     VocabWord(179, "impecunious", "having little or no money", "pecun", "money", "He was an impecunious student."),
-    VocabWord(180, "impetuous", "acting quickly without thought", "pet", "to seek", "His impetuous decision had consequences."), // [6†L28]
+    VocabWord(180, "impetuous", "acting quickly without thought", "pet", "to seek", "His impetuous decision had consequences."), // [6â€ L28]
     VocabWord(181, "implicate", "to show someone to be involved in a crime", "plic", "to fold", "The evidence seemed to implicate him."),
     VocabWord(182, "implicit", "suggested but not directly expressed", "plic", "to fold", "There was an implicit understanding between them."),
     VocabWord(183, "improvise", "to make something without preparation", "provis", "to see ahead", "He had to improvise a speech."),
     VocabWord(184, "impugn", "to dispute the truth or validity of", "pugn", "to fight", "The lawyer impugned the witness's testimony."),
     VocabWord(185, "incendiary", "intended to cause fire or violence", "cend", "to burn", "His incendiary remarks angered the crowd."),
-    VocabWord(186, "incessant", "never stopping", "cess", "to stop", "The incessant noise gave him a headache."), // [9†L23]
+    VocabWord(186, "incessant", "never stopping", "cess", "to stop", "The incessant noise gave him a headache."), // [9â€ L23]
     VocabWord(187, "incipient", "in an early stage", "cipi", "to take", "The incipient problem was addressed quickly."),
     VocabWord(188, "incognito", "having one's identity concealed", "cogn", "to know", "The celebrity traveled incognito."),
     VocabWord(189, "incontrovertible", "impossible to deny", "contra", "against", "They had incontrovertible evidence."),
@@ -233,51 +228,51 @@ object VocabData {
     VocabWord(202, "insidious", "proceeding in a gradual, subtle way", "sid", "to sit", "The disease was insidious."),
     VocabWord(203, "insolvent", "unable to pay debts", "solv", "to loosen", "The company was declared insolvent."),
     VocabWord(204, "insurmountable", "too great to be overcome", "mount", "to climb", "The obstacle seemed insurmountable."),
-    VocabWord(205, "intrepid", "fearless and adventurous", "trepid", "to tremble", "The intrepid explorer ventured into the unknown."), // [3†L19]
+    VocabWord(205, "intrepid", "fearless and adventurous", "trepid", "to tremble", "The intrepid explorer ventured into the unknown."), // [3â€ L19]
     VocabWord(206, "inveterate", "having a particular habit that is long-established", "veter", "old", "He is an inveterate smoker."),
     VocabWord(207, "invincible", "too powerful to be defeated", "vinc", "to conquer", "The team felt invincible."),
     VocabWord(208, "irascible", "easily angered", "irasc", "to be angry", "His irascible temper made him difficult to work with."),
     VocabWord(209, "itinerant", "traveling from place to place", "itiner", "journey", "He led an itinerant life."),
     VocabWord(210, "jargon", "specialized vocabulary", "jarg", "to chatter", "The report was full of technical jargon."),
     VocabWord(211, "jovial", "cheerful and friendly", "jov", "Jupiter", "He was in a jovial mood."),
-    VocabWord(212, "juxtapose", "to place side by side for comparison", "juxta", "near", "The exhibit juxtaposes modern and ancient art."), // [6†L30]
-    VocabWord(213, "keen", "having or showing eagerness; sharp", "keen", "sharp", "She has a keen eye for detail."), // [6†L31]
+    VocabWord(212, "juxtapose", "to place side by side for comparison", "juxta", "near", "The exhibit juxtaposes modern and ancient art."), // [6â€ L30]
+    VocabWord(213, "keen", "having or showing eagerness; sharp", "keen", "sharp", "She has a keen eye for detail."), // [6â€ L31]
     VocabWord(214, "labyrinth", "a complicated maze", "labyrinth", "maze", "The old city was a labyrinth of streets."),
     VocabWord(215, "lachrymose", "tearful or given to weeping", "lachrym", "tear", "The movie was so sad it made her lachrymose."),
     VocabWord(216, "lackluster", "lacking in vitality", "lack", "lacking", "His performance was lackluster."),
-    VocabWord(217, "lament", "to mourn or grieve", "ment", "mind", "The poem laments the loss of youth."), // [7†L33]
-    VocabWord(218, "languid", "lacking energy", "langu", "to be weak", "She gave him a languid wave."), // [9†L33]
+    VocabWord(217, "lament", "to mourn or grieve", "ment", "mind", "The poem laments the loss of youth."), // [7â€ L33]
+    VocabWord(218, "languid", "lacking energy", "langu", "to be weak", "She gave him a languid wave."), // [9â€ L33]
     VocabWord(219, "latent", "present but not yet apparent", "lat", "to lie hidden", "Her latent talent was discovered by her teacher."),
     VocabWord(220, "laudable", "deserving praise", "laud", "praise", "Their efforts were laudable."),
     VocabWord(221, "lenient", "merciful or tolerant", "leni", "soft", "The judge was lenient with the first-time offender."),
-    VocabWord(222, "lethargic", "sluggish and apathetic", "leth", "forgetfulness", "The hot weather made him feel lethargic."), // [9†L33]
-    VocabWord(223, "loquacious", "very talkative", "loqu", "to speak", "He was a loquacious speaker."), // [6†L26]
-    VocabWord(224, "lucid", "clear and easy to understand", "luc", "light", "She gave a lucid explanation."), // [6†L32]
-    VocabWord(225, "magnanimous", "very generous or forgiving", "magn", "great", "He was magnanimous in victory."), // [9†L25]
+    VocabWord(222, "lethargic", "sluggish and apathetic", "leth", "forgetfulness", "The hot weather made him feel lethargic."), // [9â€ L33]
+    VocabWord(223, "loquacious", "very talkative", "loqu", "to speak", "He was a loquacious speaker."), // [6â€ L26]
+    VocabWord(224, "lucid", "clear and easy to understand", "luc", "light", "She gave a lucid explanation."), // [6â€ L32]
+    VocabWord(225, "magnanimous", "very generous or forgiving", "magn", "great", "He was magnanimous in victory."), // [9â€ L25]
     VocabWord(226, "malicious", "intending to harm", "mal", "bad", "The malicious rumor spread quickly."),
     VocabWord(227, "meander", "to wander aimlessly", "meander", "river", "The river meanders through the valley."),
-    VocabWord(228, "mendacious", "not telling the truth", "mend", "fault", "The mendacious politician was caught lying."), // [2†L8]
-    VocabWord(229, "meticulous", "showing great attention to detail", "met", "fear", "She is meticulous in her work."), // [4†L13]
+    VocabWord(228, "mendacious", "not telling the truth", "mend", "fault", "The mendacious politician was caught lying."), // [2â€ L8]
+    VocabWord(229, "meticulous", "showing great attention to detail", "met", "fear", "She is meticulous in her work."), // [4â€ L13]
     VocabWord(230, "misanthropic", "hating humankind", "anthr", "human", "His misanthropic views made him a recluse."),
-    VocabWord(231, "mitigate", "to make less severe", "mit", "mild", "The medicine helped mitigate the pain."), // [6†L34]
+    VocabWord(231, "mitigate", "to make less severe", "mit", "mild", "The medicine helped mitigate the pain."), // [6â€ L34]
     VocabWord(232, "modest", "humble or moderate", "mod", "measure", "She was modest about her achievements."),
     VocabWord(233, "mundane", "lacking interest; ordinary", "mund", "world", "He had a mundane job."),
-    VocabWord(234, "nefarious", "wicked or criminal", "nef", "wrong", "The villain had a nefarious plan."), // [6†L35]
+    VocabWord(234, "nefarious", "wicked or criminal", "nef", "wrong", "The villain had a nefarious plan."), // [6â€ L35]
     VocabWord(235, "negligent", "failing to take proper care", "neg", "not", "The driver was found negligent."),
     VocabWord(236, "nonchalant", "calm and unconcerned", "chal", "warm", "He acted nonchalant about the news."),
     VocabWord(237, "notorious", "famous for something bad", "not", "to know", "The town is notorious for its crime rate."),
     VocabWord(238, "novel", "new and original", "nov", "new", "She came up with a novel idea."),
-    VocabWord(239, "obfuscate", "to make unclear or confusing", "fusc", "dark", "The lawyer tried to obfuscate the issue."), // [9†L22]
-    VocabWord(240, "obsolete", "no longer in use", "solesc", "to grow", "The old technology is now obsolete."), // [6†L37]
-    VocabWord(241, "obstinate", "stubbornly refusing to change", "stin", "to stand", "He was obstinate and refused to compromise."), // [9†L29]
+    VocabWord(239, "obfuscate", "to make unclear or confusing", "fusc", "dark", "The lawyer tried to obfuscate the issue."), // [9â€ L22]
+    VocabWord(240, "obsolete", "no longer in use", "solesc", "to grow", "The old technology is now obsolete."), // [6â€ L37]
+    VocabWord(241, "obstinate", "stubbornly refusing to change", "stin", "to stand", "He was obstinate and refused to compromise."), // [9â€ L29]
     VocabWord(242, "officious", "assertive of authority in an annoyingly domineering way", "fic", "to do", "The officious security guard was rude."),
-    VocabWord(243, "omnipotent", "all-powerful", "omni", "all", "The king was not omnipotent."), // [12†L29]
+    VocabWord(243, "omnipotent", "all-powerful", "omni", "all", "The king was not omnipotent."), // [12â€ L29]
     VocabWord(244, "onerous", "involving a great amount of effort", "oner", "burden", "The work was onerous."),
-    VocabWord(245, "optimist", "a person who expects the best", "opt", "best", "He is an optimist."), // [12†L20]
+    VocabWord(245, "optimist", "a person who expects the best", "opt", "best", "He is an optimist."), // [12â€ L20]
     VocabWord(246, "opulent", "expensive and luxurious", "opul", "wealth", "They lived in an opulent mansion."),
-    VocabWord(247, "ostracize", "to exclude from a group", "ostr", "shell", "He was ostracized by his peers."), // [7†L38]
+    VocabWord(247, "ostracize", "to exclude from a group", "ostr", "shell", "He was ostracized by his peers."), // [7â€ L38]
     VocabWord(248, "paradox", "a seemingly contradictory statement", "para", "beyond", "It is a paradox that the rich are often unhappy."),
-    VocabWord(249, "parsimonious", "very unwilling to spend money", "pars", "to save", "He was parsimonious with his money."), // [7†L38]
+    VocabWord(249, "parsimonious", "very unwilling to spend money", "pars", "to save", "He was parsimonious with his money."), // [7â€ L38]
     VocabWord(250, "paucity", "the presence of something in only small amounts", "pauc", "few", "There is a paucity of evidence."),
 
     // ============================================================
@@ -291,22 +286,22 @@ object VocabData {
     VocabWord(255, "perfidious", "deceitful and untrustworthy", "fid", "faith", "The perfidious spy betrayed his country."),
     VocabWord(256, "perfunctory", "done merely as a routine", "funct", "to perform", "He gave a perfunctory nod."),
     VocabWord(257, "perilous", "full of danger", "peril", "danger", "The journey was perilous."),
-    VocabWord(258, "pernicious", "having a harmful effect", "nec", "death", "The pernicious influence of social media is a concern."), // [9†L28]
+    VocabWord(258, "pernicious", "having a harmful effect", "nec", "death", "The pernicious influence of social media is a concern."), // [9â€ L28]
     VocabWord(259, "perpetuate", "to make something continue indefinitely", "pet", "to seek", "The myth was perpetuated by the media."),
     VocabWord(260, "perspicacious", "having a ready insight into things", "spic", "to look", "She is a perspicacious observer."),
-    VocabWord(261, "perspicuity", "clarity of expression", "spic", "to look", "The perspicuity of his writing was admired."), // [1†L26]
-    VocabWord(262, "pertinent", "relevant to a particular matter", "tin", "to hold", "Please keep your comments pertinent to the topic."), // [9†L26]
+    VocabWord(261, "perspicuity", "clarity of expression", "spic", "to look", "The perspicuity of his writing was admired."), // [1â€ L26]
+    VocabWord(262, "pertinent", "relevant to a particular matter", "tin", "to hold", "Please keep your comments pertinent to the topic."), // [9â€ L26]
     VocabWord(263, "peruse", "to read carefully", "per", "through", "He perused the document before signing."),
     VocabWord(264, "pervasive", "spreading widely throughout an area", "vas", "to go", "The smell was pervasive."),
     VocabWord(265, "petulant", "childishly sulky or bad-tempered", "pet", "to seek", "He made a petulant complaint."),
-    VocabWord(266, "philanthropic", "seeking to promote the welfare of others", "phil", "love", "Her philanthropic work helped many."), // [2†L25]
+    VocabWord(266, "philanthropic", "seeking to promote the welfare of others", "phil", "love", "Her philanthropic work helped many."), // [2â€ L25]
     VocabWord(267, "phlegmatic", "having an unemotional and stolidly calm disposition", "phlegm", "inflammation", "He remained phlegmatic under pressure."),
     VocabWord(268, "pious", "deeply religious", "pious", "dutiful", "She is a pious woman."),
     VocabWord(269, "pithy", "brief and full of meaning", "pith", "core", "He gave a pithy summary of the situation."),
     VocabWord(270, "placate", "to make someone less angry", "plac", "to please", "He tried to placate the angry customer."),
     VocabWord(271, "plausible", "seeming reasonable or probable", "plaus", "to applaud", "Her excuse was plausible."),
     VocabWord(272, "plethora", "an excess of something", "pleth", "fullness", "There is a plethora of information on the internet."),
-    VocabWord(273, "pragmatic", "dealing with things practically", "prag", "to do", "She has a pragmatic approach to life."), // [6†L38]
+    VocabWord(273, "pragmatic", "dealing with things practically", "prag", "to do", "She has a pragmatic approach to life."), // [6â€ L38]
     VocabWord(274, "precarious", "not securely held", "prec", "to pray", "His job was precarious."),
     VocabWord(275, "precedent", "a previous event used as a guide", "ced", "to go", "The decision set a precedent."),
     VocabWord(276, "precipitate", "to cause something to happen suddenly", "cap", "head", "The event precipitated a crisis."),
@@ -333,18 +328,18 @@ object VocabData {
     VocabWord(297, "prosperity", "the state of being successful", "sper", "hope", "The country enjoyed a period of prosperity."),
     VocabWord(298, "provident", "making provision for the future", "vid", "to see", "She is provident and saves money."),
     VocabWord(299, "provincial", "relating to a province; unsophisticated", "provinc", "province", "He had a provincial attitude."),
-    VocabWord(300, "prudent", "acting with care for the future", "prud", "to foresee", "It would be prudent to save money."), // [2†L6]
+    VocabWord(300, "prudent", "acting with care for the future", "prud", "to foresee", "It would be prudent to save money."), // [2â€ L6]
     VocabWord(301, "puerile", "childish and silly", "puer", "boy", "His puerile jokes were annoying."),
     VocabWord(302, "pugnacious", "eager to fight", "pugn", "to fight", "He is a pugnacious boxer."),
     VocabWord(303, "pungent", "having a strong taste or smell", "pung", "to sting", "The pungent odor of onions filled the room."),
-    VocabWord(304, "pusillanimous", "showing a lack of courage", "pusill", "small", "His pusillanimous behavior was shameful."), // [2†L5]
-    VocabWord(305, "quaint", "attractively unusual", "quaint", "known", "The village was quaint."), // [2†L11]
+    VocabWord(304, "pusillanimous", "showing a lack of courage", "pusill", "small", "His pusillanimous behavior was shameful."), // [2â€ L5]
+    VocabWord(305, "quaint", "attractively unusual", "quaint", "known", "The village was quaint."), // [2â€ L11]
     VocabWord(306, "querulous", "complaining in a whining manner", "quer", "to complain", "The querulous child kept whining."),
-    VocabWord(307, "quintessential", "representing the most perfect example", "quint", "fifth", "She is the quintessential teacher."), // [6†L40]
+    VocabWord(307, "quintessential", "representing the most perfect example", "quint", "fifth", "She is the quintessential teacher."), // [6â€ L40]
     VocabWord(308, "quixotic", "exceedingly idealistic", "Quixote", "Don Quixote", "His quixotic plan was doomed to fail."),
     VocabWord(309, "quotidian", "occurring every day; ordinary", "quot", "how many", "The quotidian routine was boring."),
     VocabWord(310, "rancor", "bitter resentment", "ranc", "to be sour", "There was rancor between the two rivals."),
-    VocabWord(311, "recalcitrant", "having a stubbornly uncooperative attitude", "calc", "heel", "The recalcitrant student refused to obey."), // [6†L42]
+    VocabWord(311, "recalcitrant", "having a stubbornly uncooperative attitude", "calc", "heel", "The recalcitrant student refused to obey."), // [6â€ L42]
     VocabWord(312, "recant", "to withdraw a statement", "cant", "to sing", "He was forced to recant his testimony."),
     VocabWord(313, "reclusive", "avoiding the company of others", "claud", "to shut", "He leads a reclusive life."),
     VocabWord(314, "rectitude", "morally correct behavior", "rect", "right", "He is a man of rectitude."),
@@ -361,11 +356,11 @@ object VocabData {
     VocabWord(325, "rescind", "to revoke or cancel", "scind", "to cut", "The company rescinded the offer."),
     VocabWord(326, "resilient", "able to recover quickly", "sali", "to jump", "She is a resilient person."),
     VocabWord(327, "resolute", "admirably determined", "solv", "to loosen", "He remained resolute in his decision."),
-    VocabWord(328, "reticent", "not revealing one's thoughts", "tac", "to be silent", "He was reticent about his past."), // [0†L9]
+    VocabWord(328, "reticent", "not revealing one's thoughts", "tac", "to be silent", "He was reticent about his past."), // [0â€ L9]
     VocabWord(329, "revere", "to feel deep respect", "ver", "awe", "The people revere their leader."),
     VocabWord(330, "rhetoric", "the art of effective or persuasive speaking", "rhetor", "orator", "His rhetoric was powerful."),
     VocabWord(331, "rigorous", "extremely thorough and careful", "rigor", "stiffness", "The training was rigorous."),
-    VocabWord(332, "sagacious", "having good judgment", "sag", "wise", "She gave sagacious advice."), // [9†L30]
+    VocabWord(332, "sagacious", "having good judgment", "sag", "wise", "She gave sagacious advice."), // [9â€ L30]
     VocabWord(333, "salient", "most noticeable or important", "sali", "to jump", "The salient points were summarized."),
     VocabWord(334, "sanction", "to give official permission", "sanct", "holy", "The government sanctioned the project."),
     VocabWord(335, "sanguine", "optimistic", "sanguin", "blood", "He is sanguine about the future."),
@@ -377,10 +372,10 @@ object VocabData {
     VocabWord(341, "serendipity", "the occurrence of happy accidents", "Serendip", "Ceylon", "They met by serendipity."),
     VocabWord(342, "servile", "having or showing an excessive willingness to serve", "serv", "slave", "His servile behavior was pathetic."),
     VocabWord(343, "skeptic", "a person who doubts accepted beliefs", "skept", "to consider", "He is a skeptic."),
-    VocabWord(344, "slothful", "lazy and unwilling to work", "sloth", "slowness", "The slothful employee was fired."), // [10†L29]
+    VocabWord(344, "slothful", "lazy and unwilling to work", "sloth", "slowness", "The slothful employee was fired."), // [10â€ L29]
     VocabWord(345, "sobriety", "the state of being sober", "sobr", "not drunk", "He maintained his sobriety."),
     VocabWord(346, "solicitous", "showing interest or concern", "solicit", "to stir", "She was solicitous about his health."),
-    VocabWord(347, "soporific", "tending to induce sleep", "sopor", "sleep", "The lecture was soporific."), // [6†L43]
+    VocabWord(347, "soporific", "tending to induce sleep", "sopor", "sleep", "The lecture was soporific."), // [6â€ L43]
     VocabWord(348, "specious", "superficially plausible but actually wrong", "spec", "to look", "His specious argument was easily refuted."),
     VocabWord(349, "sporadic", "occurring occasionally", "spor", "to sow", "There were sporadic outbreaks of violence."),
     VocabWord(350, "spurious", "not genuine or authentic", "spur", "false", "The claim was spurious."),
@@ -400,20 +395,20 @@ object VocabData {
     VocabWord(364, "superfluous", "unnecessary, especially through being more than enough", "flu", "to flow", "The report contained superfluous details."),
     VocabWord(365, "surfeit", "an excessive amount", "sur", "over", "There is a surfeit of information."),
     VocabWord(366, "surly", "bad-tempered and unfriendly", "sur", "over", "He gave a surly reply."),
-    VocabWord(367, "surreptitious", "kept secret", "rept", "to crawl", "He made a surreptitious glance."), // [9†L20]
-    VocabWord(368, "surveillance", "close observation", "veill", "to watch", "The suspect was under surveillance."), // [11†L19]
+    VocabWord(367, "surreptitious", "kept secret", "rept", "to crawl", "He made a surreptitious glance."), // [9â€ L20]
+    VocabWord(368, "surveillance", "close observation", "veill", "to watch", "The suspect was under surveillance."), // [11â€ L19]
     VocabWord(369, "sycophant", "a person who acts obsequiously", "syc", "fig", "The sycophant flattered the boss."),
-    VocabWord(370, "tacit", "understood without being stated", "tac", "to be silent", "There was a tacit agreement between them."), // [4†L22]
-    VocabWord(371, "taciturn", "reserved or uncommunicative", "tac", "to be silent", "He was a taciturn man."), // [6†L45]
-    VocabWord(372, "tangential", "only slightly related", "tang", "to touch", "His comments were tangential to the discussion."), // [4†L23]
-    VocabWord(373, "tedious", "too long and boring", "taed", "to weary", "The work was tedious."), // [4†L24]
+    VocabWord(370, "tacit", "understood without being stated", "tac", "to be silent", "There was a tacit agreement between them."), // [4â€ L22]
+    VocabWord(371, "taciturn", "reserved or uncommunicative", "tac", "to be silent", "He was a taciturn man."), // [6â€ L45]
+    VocabWord(372, "tangential", "only slightly related", "tang", "to touch", "His comments were tangential to the discussion."), // [4â€ L23]
+    VocabWord(373, "tedious", "too long and boring", "taed", "to weary", "The work was tedious."), // [4â€ L24]
     VocabWord(374, "temerity", "excessive confidence or boldness", "temer", "rashness", "He had the temerity to contradict his boss."),
-    VocabWord(375, "temperance", "moderation in action or thought", "temper", "to regulate", "He preached temperance."), // [4†L25]
+    VocabWord(375, "temperance", "moderation in action or thought", "temper", "to regulate", "He preached temperance."), // [4â€ L25]
     VocabWord(376, "tenacious", "holding firmly", "ten", "to hold", "He is tenacious in his pursuit of success."),
     VocabWord(377, "tentative", "not certain or fixed", "tent", "to try", "They reached a tentative agreement."),
     VocabWord(378, "tenuous", "very weak or slight", "tenu", "thin", "The connection was tenuous."),
     VocabWord(379, "tirade", "a long, angry speech", "tir", "to draw", "He launched into a tirade."),
-    VocabWord(380, "torpid", "mentally or physically inactive", "torp", "to be stiff", "The hot weather made him torpid."), // [4†L26]
+    VocabWord(380, "torpid", "mentally or physically inactive", "torp", "to be stiff", "The hot weather made him torpid."), // [4â€ L26]
     VocabWord(381, "tortuous", "full of twists and turns", "tort", "to twist", "The road was tortuous."),
     VocabWord(382, "tractable", "easy to control or influence", "tract", "to draw", "The horse was tractable."),
     VocabWord(383, "transient", "lasting only for a short time", "trans", "across", "The feeling was transient."),
@@ -436,14 +431,14 @@ object VocabData {
     VocabWord(400, "venerate", "to regard with great respect", "vener", "awe", "The people venerate their ancestors."),
     VocabWord(401, "veracity", "truthfulness", "ver", "true", "I doubt the veracity of his statement."),
     VocabWord(402, "verbose", "using more words than needed", "verb", "word", "His verbose writing was hard to read."),
-    VocabWord(403, "verity", "a true principle or belief", "ver", "true", "The verity of his claim was questioned."), // [1†L25]
+    VocabWord(403, "verity", "a true principle or belief", "ver", "true", "The verity of his claim was questioned."), // [1â€ L25]
     VocabWord(404, "vex", "to make someone feel annoyed", "vex", "to shake", "His constant questions vexed her."),
     VocabWord(405, "viable", "capable of working successfully", "viv", "life", "The plan is not viable."),
-    VocabWord(406, "vindictive", "having a strong desire for revenge", "vind", "to claim", "He is a vindictive person."), // [9†L33]
+    VocabWord(406, "vindictive", "having a strong desire for revenge", "vind", "to claim", "He is a vindictive person."), // [9â€ L33]
     VocabWord(407, "virulent", "extremely severe or harmful", "vir", "poison", "The disease was virulent."),
     VocabWord(408, "vitiate", "to spoil or impair", "vit", "fault", "The error vitiated the entire experiment."),
     VocabWord(409, "vitriolic", "filled with bitter criticism", "vitriol", "sulfuric acid", "His vitriolic comments were hurtful."),
-    VocabWord(410, "vivacious", "lively and animated", "viv", "life", "She has a vivacious personality."), // [9†L31]
+    VocabWord(410, "vivacious", "lively and animated", "viv", "life", "She has a vivacious personality."), // [9â€ L31]
     VocabWord(411, "vociferous", "loud and forceful", "voc", "voice", "He made a vociferous protest."),
     VocabWord(412, "volatile", "liable to change rapidly", "vol", "to fly", "The situation is volatile."),
     VocabWord(413, "voluble", "speaking easily and fluently", "volv", "to roll", "She is a voluble speaker."),
@@ -1241,4 +1236,3 @@ object VocabData {
     VocabWord(1200, "pediatrician", "a children's doctor", "ped", "child", "She is a pediatrician.")
     )
 }
-```
