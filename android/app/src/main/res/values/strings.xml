@@ -12,7 +12,14 @@
     <string name="practice_badge">Random practice</string>
     <string name="swipe_left_label">Swipe left for next</string>
     <string name="swipe_left_cd">Swipe left to next random word</string>
-    <string name="main_instructions">Home widget = one new word each day (starts at word 1, then loops).\n\nIn the app = swipe left through random words from the full list for practice.</string>
+    <string name="bank_label">Idioms · Phrasals · One-word</string>
+    <string name="bank_hint">Swipe right for exam-style idioms, phrasal verbs, and one-word substitutes.</string>
+    <string name="swipe_right_label">Swipe right for next</string>
+    <string name="swipe_right_cd">Swipe right to next practice item</string>
+    <string name="kind_idiom">Idiom</string>
+    <string name="kind_phrasal">Phrasal verb</string>
+    <string name="kind_one_word">One-word substitute</string>
+    <string name="main_instructions">Home widget = one new word each day (starts at word 1, then loops).\n\nIn the app: swipe left for random vocabulary, swipe right for idioms / phrasals / one-word substitutes.</string>
     <string name="main_refresh">Refresh home widget</string>
     <string name="contact_developer">Contact developer</string>
     <string name="theme_label">Theme</string>

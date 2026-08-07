@@ -9,16 +9,28 @@ import android.view.ViewConfiguration
 import android.widget.FrameLayout
 import kotlin.math.abs
 
+enum class SwipeDirection {
+    LEFT,
+    RIGHT,
+}
+
 /**
- * Tinder-style drag: one left swipe = one card. Listener is cleared so
- * follow-up animations cannot chain-fire more cards.
+ * One swipe = one card. Supports left or right depending on [preferredDirection].
  */
 class SwipeCardView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
 ) : FrameLayout(context, attrs) {
 
-    var onSwipedLeft: (() -> Unit)? = null
+    var preferredDirection: SwipeDirection = SwipeDirection.LEFT
+    var onSwiped: (() -> Unit)? = null
+
+    /** @deprecated use [onSwiped] */
+    var onSwipedLeft: (() -> Unit)?
+        get() = onSwiped
+        set(value) {
+            onSwiped = value
+        }
 
     private val touchSlop = ViewConfiguration.get(context).scaledTouchSlop
     private var downX = 0f
@@ -75,9 +87,11 @@ class SwipeCardView @JvmOverloads constructor(
                 val index = event.findPointerIndex(activePointerId)
                 if (index < 0) return true
                 val dx = event.getX(index) - downX
-                val travel = if (dx > 0) dx * 0.2f else dx
-                translationX = travel
-                rotation = (travel / width.coerceAtLeast(1)) * 12f
+                translationX = when (preferredDirection) {
+                    SwipeDirection.LEFT -> if (dx > 0) dx * 0.2f else dx
+                    SwipeDirection.RIGHT -> if (dx < 0) dx * 0.2f else dx
+                }
+                rotation = (translationX / width.coerceAtLeast(1)) * 12f
                 return true
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
@@ -86,9 +100,13 @@ class SwipeCardView @JvmOverloads constructor(
                     dragging = false
                     return true
                 }
-                val shouldSwipeLeft = translationX < -width * 0.25f
-                if (shouldSwipeLeft) {
-                    animateSwipeLeft()
+                val threshold = width * 0.25f
+                val shouldSwipe = when (preferredDirection) {
+                    SwipeDirection.LEFT -> translationX < -threshold
+                    SwipeDirection.RIGHT -> translationX > threshold
+                }
+                if (shouldSwipe) {
+                    animateSwipe()
                 } else {
                     animate().setListener(null).translationX(0f).rotation(0f).setDuration(180).start()
                 }
@@ -101,27 +119,36 @@ class SwipeCardView @JvmOverloads constructor(
     }
 
     fun animateSwipeLeft() {
+        preferredDirection = SwipeDirection.LEFT
+        animateSwipe()
+    }
+
+    fun animateSwipeRight() {
+        preferredDirection = SwipeDirection.RIGHT
+        animateSwipe()
+    }
+
+    fun animateSwipe() {
         if (animating || gestureLocked) return
         animating = true
         gestureLocked = true
         parent?.requestDisallowInterceptTouchEvent(true)
         val distance = width.toFloat().coerceAtLeast(1f) + 120f
+        val targetX = if (preferredDirection == SwipeDirection.LEFT) -distance else distance
+        val targetRot = if (preferredDirection == SwipeDirection.LEFT) -16f else 16f
         animate()
-            .translationX(-distance)
-            .rotation(-16f)
+            .translationX(targetX)
+            .rotation(targetRot)
             .alpha(0.4f)
             .setDuration(200)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    // Critical: clear listener so the next "card in" animation
-                    // cannot re-fire onSwipedLeft and skip many cards.
                     animate().setListener(null)
                     translationX = 0f
                     rotation = 0f
                     alpha = 1f
                     animating = false
-                    onSwipedLeft?.invoke()
-                    // Unlock on next DOWN only (set in ACTION_DOWN)
+                    onSwiped?.invoke()
                 }
             })
             .start()

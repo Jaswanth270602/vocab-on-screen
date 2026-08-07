@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
@@ -14,8 +15,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 
 class MainActivity : AppCompatActivity() {
-    private val deck = RandomDeck()
-    private var currentPractice: VocabWord? = null
+    private val vocabDeck = RandomDeck()
+    private val bankDeck = PracticeDeck()
+    private var currentVocab: VocabWord? = null
+    private var currentBank: PracticeItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +42,22 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        val swipeCard = findViewById<SwipeCardView>(R.id.swipe_card)
-        swipeCard.onSwipedLeft = { showNextPractice(animateIn = true) }
+        val vocabSwipe = findViewById<SwipeCardView>(R.id.swipe_card)
+        vocabSwipe.preferredDirection = SwipeDirection.LEFT
+        vocabSwipe.onSwiped = { showNextVocab(animateIn = true) }
         findViewById<ImageButton>(R.id.btn_swipe_left).setOnClickListener {
-            swipeCard.animateSwipeLeft()
+            vocabSwipe.animateSwipeLeft()
         }
 
-        showNextPractice(animateIn = false)
+        val bankSwipe = findViewById<SwipeCardView>(R.id.bank_swipe_card)
+        bankSwipe.preferredDirection = SwipeDirection.RIGHT
+        bankSwipe.onSwiped = { showNextBank(animateIn = true) }
+        findViewById<ImageButton>(R.id.btn_swipe_right).setOnClickListener {
+            bankSwipe.animateSwipeRight()
+        }
+
+        showNextVocab(animateIn = false)
+        showNextBank(animateIn = false)
         applyTheme(ThemePrefs.get(this))
     }
 
@@ -61,15 +73,23 @@ class MainActivity : AppCompatActivity() {
         VocabWidgetViews.pushAll(this)
     }
 
-    private fun showNextPractice(animateIn: Boolean) {
-        currentPractice = deck.next()
-        bindPracticeCard(ThemePrefs.get(this))
-        val card = findViewById<SwipeCardView>(R.id.swipe_card)
-        // Always clear animator listener — otherwise one swipe chains into many cards.
+    private fun showNextVocab(animateIn: Boolean) {
+        currentVocab = vocabDeck.next()
+        bindVocabCard(ThemePrefs.get(this))
+        animateCardIn(findViewById(R.id.swipe_card), fromLeft = true, animateIn)
+    }
+
+    private fun showNextBank(animateIn: Boolean) {
+        currentBank = bankDeck.next()
+        bindBankCard(ThemePrefs.get(this))
+        animateCardIn(findViewById(R.id.bank_swipe_card), fromLeft = false, animateIn)
+    }
+
+    private fun animateCardIn(card: SwipeCardView, fromLeft: Boolean, animateIn: Boolean) {
         card.animate().setListener(null)
         if (animateIn) {
             card.alpha = 0f
-            card.translationX = 72f
+            card.translationX = if (fromLeft) 72f else -72f
             card.animate()
                 .setListener(null)
                 .alpha(1f)
@@ -109,8 +129,15 @@ class MainActivity : AppCompatActivity() {
         styleText(R.id.practice_label, taglineColor, bodyTypeface)
         styleText(R.id.practice_hint, bodyColor, bodyTypeface)
         styleText(R.id.swipe_left_label, titleColor, bodyTypeface)
+        styleText(R.id.bank_label, taglineColor, bodyTypeface)
+        styleText(R.id.bank_hint, bodyColor, bodyTypeface)
+        styleText(R.id.swipe_right_label, titleColor, bodyTypeface)
         styleText(R.id.theme_label, taglineColor, bodyTypeface)
         styleText(R.id.main_instructions, bodyColor, bodyTypeface)
+
+        val divider = (accent and 0x00FFFFFF) or 0x55000000
+        findViewById<View>(R.id.divider_bank_top).setBackgroundColor(divider)
+        findViewById<View>(R.id.divider_bank_bottom).setBackgroundColor(divider)
 
         val chipNormal =
             if (theme == AppTheme.COAST) R.drawable.bg_theme_chip_dark else R.drawable.bg_theme_chip
@@ -123,8 +150,10 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<LinearLayout>(R.id.preview_card).setBackgroundResource(theme.cardBackground)
         findViewById<LinearLayout>(R.id.swipe_card_inner).setBackgroundResource(theme.cardBackground)
+        findViewById<LinearLayout>(R.id.bank_card_inner).setBackgroundResource(theme.cardBackground)
 
         findViewById<ImageButton>(R.id.btn_swipe_left).background?.mutate()?.setTint(accent)
+        findViewById<ImageButton>(R.id.btn_swipe_right).background?.mutate()?.setTint(accent)
 
         val today = DailyWord.today(this)
         val word = today.word
@@ -163,11 +192,12 @@ class MainActivity : AppCompatActivity() {
             typeface = bodyTypeface
         }
 
-        bindPracticeCard(theme)
+        bindVocabCard(theme)
+        bindBankCard(theme)
     }
 
-    private fun bindPracticeCard(theme: AppTheme) {
-        val practice = currentPractice ?: return
+    private fun bindVocabCard(theme: AppTheme) {
+        val practice = currentVocab ?: return
         val ink = ContextCompat.getColor(this, theme.ink)
         val inkSoft = ContextCompat.getColor(this, theme.inkSoft)
         val accent = ContextCompat.getColor(this, theme.accent)
@@ -196,6 +226,47 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.swipe_example).apply {
             text = "“${practice.example}”"
             setTextColor(inkSoft)
+            typeface = bodyTypeface
+        }
+    }
+
+    private fun bindBankCard(theme: AppTheme) {
+        val item = currentBank ?: return
+        val ink = ContextCompat.getColor(this, theme.ink)
+        val inkSoft = ContextCompat.getColor(this, theme.inkSoft)
+        val accent = ContextCompat.getColor(this, theme.accent)
+        val wordTypeface = ResourcesCompat.getFont(this, theme.wordFont) ?: Typeface.DEFAULT_BOLD
+        val bodyTypeface = ResourcesCompat.getFont(this, theme.bodyFont) ?: Typeface.DEFAULT
+
+        val kindLabel = when (item.kind) {
+            PracticeKind.IDIOM -> getString(R.string.kind_idiom)
+            PracticeKind.PHRASAL_VERB -> getString(R.string.kind_phrasal)
+            PracticeKind.ONE_WORD -> getString(R.string.kind_one_word)
+        }
+
+        findViewById<TextView>(R.id.bank_kind).apply {
+            text = kindLabel
+            setTextColor(accent)
+            typeface = bodyTypeface
+        }
+        findViewById<TextView>(R.id.bank_prompt).apply {
+            text = item.prompt
+            setTextColor(ink)
+            typeface = wordTypeface
+        }
+        findViewById<TextView>(R.id.bank_meaning).apply {
+            text = item.meaning
+            setTextColor(inkSoft)
+            typeface = bodyTypeface
+        }
+        findViewById<TextView>(R.id.bank_example).apply {
+            text = item.example
+            setTextColor(inkSoft)
+            typeface = bodyTypeface
+        }
+        findViewById<TextView>(R.id.bank_progress).apply {
+            text = bankDeck.progressLabel()
+            setTextColor(accent)
             typeface = bodyTypeface
         }
     }
