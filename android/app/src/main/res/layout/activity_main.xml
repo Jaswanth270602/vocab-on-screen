@@ -320,7 +320,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="28dp"
             android:text="@string/main_refresh" />
+
+        <Button
+            android:id="@+id/btn_contact_developer"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="28dp"
+            android:text="@string/contact_developer" />
     </LinearLayout>
 </ScrollView>

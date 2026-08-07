@@ -13,6 +13,7 @@
     <string name="swipe_left_cd">Swipe left to next random word</string>
     <string name="main_instructions">Home widget = one new word each day (starts at word 1, then loops).\n\nIn the app = swipe left through random words from the full list for practice.</string>
     <string name="main_refresh">Refresh home widget</string>
+    <string name="contact_developer">Contact developer</string>
     <string name="theme_label">Theme</string>
     <string name="theme_grove">Grove</string>
     <string name="theme_grove_sub">Soft glass green · DM Sans</string>

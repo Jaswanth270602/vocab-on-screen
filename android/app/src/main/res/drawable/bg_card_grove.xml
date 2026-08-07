@@ -14,27 +14,23 @@
             <gradient
                 android:angle="135"
                 android:endColor="#00FFFFFF"
-                android:startColor="#4490C4A0"
+                android:startColor="#5590C4A0"
                 android:type="linear" />
             <corners android:radius="28dp" />
         </shape>
     </item>
     <item
-        android:width="150dp"
-        android:height="150dp"
-        android:gravity="top|end"
-        android:right="-48dp"
-        android:top="-52dp">
+        android:width="120dp"
+        android:height="120dp"
+        android:gravity="top|end">
         <shape android:shape="oval">
             <solid android:color="@color/grove_blob" />
         </shape>
     </item>
     <item
-        android:width="120dp"
-        android:height="120dp"
-        android:bottom="-44dp"
-        android:gravity="bottom|start"
-        android:left="-40dp">
+        android:width="90dp"
+        android:height="90dp"
+        android:gravity="bottom|start">
         <shape android:shape="oval">
             <solid android:color="@color/grove_blob_soft" />
         </shape>

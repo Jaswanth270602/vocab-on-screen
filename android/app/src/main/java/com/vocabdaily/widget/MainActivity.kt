@@ -1,6 +1,8 @@
 package com.vocabdaily.widget
 
+import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -28,6 +30,15 @@ class MainActivity : AppCompatActivity() {
             applyTheme(ThemePrefs.get(this))
         }
 
+        findViewById<Button>(R.id.btn_contact_developer).setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.linkedin.com/in/jaswanth-kumar-palavalasa-570549248/"),
+                ),
+            )
+        }
+
         val swipeCard = findViewById<SwipeCardView>(R.id.swipe_card)
         swipeCard.onSwipedLeft = { showNextPractice(animateIn = true) }
         findViewById<ImageButton>(R.id.btn_swipe_left).setOnClickListener {
@@ -53,11 +64,21 @@ class MainActivity : AppCompatActivity() {
     private fun showNextPractice(animateIn: Boolean) {
         currentPractice = deck.next()
         bindPracticeCard(ThemePrefs.get(this))
+        val card = findViewById<SwipeCardView>(R.id.swipe_card)
+        // Always clear animator listener — otherwise one swipe chains into many cards.
+        card.animate().setListener(null)
         if (animateIn) {
-            val card = findViewById<SwipeCardView>(R.id.swipe_card)
             card.alpha = 0f
-            card.translationX = 80f
-            card.animate().alpha(1f).translationX(0f).setDuration(180).start()
+            card.translationX = 72f
+            card.animate()
+                .setListener(null)
+                .alpha(1f)
+                .translationX(0f)
+                .setDuration(160)
+                .withEndAction { card.unlockGesture() }
+                .start()
+        } else {
+            card.unlockGesture()
         }
     }
 

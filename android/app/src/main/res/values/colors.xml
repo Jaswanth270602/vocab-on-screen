@@ -28,7 +28,7 @@
 
     <!-- Coast (sky glass — default pretty theme) -->
     <color name="coast_page">#DCEAF3</color>
-    <color name="coast_card">#D9F7FBFF</color>
+    <color name="coast_card">#E6F7FBFF</color>
     <color name="coast_ink">#12344F</color>
     <color name="coast_ink_soft">#3A5F7A</color>
     <color name="coast_fog">#12344F</color>
