@@ -5,13 +5,21 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.widget.RemoteViews
 
 object VocabWidgetViews {
-    fun content(context: Context, today: TodayCard = DailyWord.today()): RemoteViews {
+    fun content(
+        context: Context,
+        options: Bundle? = null,
+        today: TodayCard = DailyWord.today(context),
+    ): RemoteViews {
         val theme = ThemePrefs.get(context)
+        val minHeight = options?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, 0) ?: 0
+        val layout = theme.layoutForHeightDp(minHeight)
         val word = today.word
-        return RemoteViews(context.packageName, theme.widgetLayout).apply {
+
+        return RemoteViews(context.packageName, layout).apply {
             setTextViewText(R.id.widget_day, today.dayLabel)
             setTextViewText(R.id.widget_count, today.dayNumber)
             setTextViewText(R.id.widget_word, word.word)
@@ -24,9 +32,9 @@ object VocabWidgetViews {
 
     fun push(context: Context, appWidgetIds: IntArray) {
         val manager = AppWidgetManager.getInstance(context)
-        val views = content(context)
         for (id in appWidgetIds) {
-            manager.updateAppWidget(id, views)
+            val options = manager.getAppWidgetOptions(id)
+            manager.updateAppWidget(id, content(context, options))
         }
     }
 

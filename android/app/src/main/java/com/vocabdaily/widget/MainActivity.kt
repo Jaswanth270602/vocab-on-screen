@@ -3,6 +3,7 @@ package com.vocabdaily.widget
 import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -11,6 +12,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 
 class MainActivity : AppCompatActivity() {
+    private val deck = RandomDeck()
+    private var currentPractice: VocabWord? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +28,13 @@ class MainActivity : AppCompatActivity() {
             applyTheme(ThemePrefs.get(this))
         }
 
+        val swipeCard = findViewById<SwipeCardView>(R.id.swipe_card)
+        swipeCard.onSwipedLeft = { showNextPractice(animateIn = true) }
+        findViewById<ImageButton>(R.id.btn_swipe_left).setOnClickListener {
+            swipeCard.animateSwipeLeft()
+        }
+
+        showNextPractice(animateIn = false)
         applyTheme(ThemePrefs.get(this))
     }
 
@@ -37,6 +48,17 @@ class MainActivity : AppCompatActivity() {
         ThemePrefs.set(this, theme)
         applyTheme(theme)
         VocabWidgetViews.pushAll(this)
+    }
+
+    private fun showNextPractice(animateIn: Boolean) {
+        currentPractice = deck.next()
+        bindPracticeCard(ThemePrefs.get(this))
+        if (animateIn) {
+            val card = findViewById<SwipeCardView>(R.id.swipe_card)
+            card.alpha = 0f
+            card.translationX = 80f
+            card.animate().alpha(1f).translationX(0f).setDuration(180).start()
+        }
     }
 
     private fun applyTheme(theme: AppTheme) {
@@ -53,22 +75,21 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ScrollView>(R.id.main_scroll).setBackgroundColor(pageBg)
 
-        findViewById<TextView>(R.id.main_title).apply {
-            setTextColor(titleColor)
-            typeface = wordTypeface
+        fun styleText(id: Int, color: Int, face: Typeface) {
+            findViewById<TextView>(id).apply {
+                setTextColor(color)
+                typeface = face
+            }
         }
-        findViewById<TextView>(R.id.main_tagline).apply {
-            setTextColor(taglineColor)
-            typeface = bodyTypeface
-        }
-        findViewById<TextView>(R.id.theme_label).apply {
-            setTextColor(taglineColor)
-            typeface = bodyTypeface
-        }
-        findViewById<TextView>(R.id.main_instructions).apply {
-            setTextColor(bodyColor)
-            typeface = bodyTypeface
-        }
+
+        styleText(R.id.main_title, titleColor, wordTypeface)
+        styleText(R.id.main_tagline, taglineColor, bodyTypeface)
+        styleText(R.id.today_label, taglineColor, bodyTypeface)
+        styleText(R.id.practice_label, taglineColor, bodyTypeface)
+        styleText(R.id.practice_hint, bodyColor, bodyTypeface)
+        styleText(R.id.swipe_left_label, titleColor, bodyTypeface)
+        styleText(R.id.theme_label, taglineColor, bodyTypeface)
+        styleText(R.id.main_instructions, bodyColor, bodyTypeface)
 
         val chipNormal =
             if (theme == AppTheme.COAST) R.drawable.bg_theme_chip_dark else R.drawable.bg_theme_chip
@@ -79,12 +100,13 @@ class MainActivity : AppCompatActivity() {
         styleThemeChip(R.id.theme_ink, R.id.theme_ink_title, R.id.theme_ink_sub, theme == AppTheme.INK, titleColor, taglineColor, bodyTypeface, chipNormal, chipSelected)
         styleThemeChip(R.id.theme_coast, R.id.theme_coast_title, R.id.theme_coast_sub, theme == AppTheme.COAST, titleColor, taglineColor, bodyTypeface, chipNormal, chipSelected)
 
-        val card = findViewById<LinearLayout>(R.id.preview_card)
-        card.setBackgroundResource(theme.cardBackground)
+        findViewById<LinearLayout>(R.id.preview_card).setBackgroundResource(theme.cardBackground)
+        findViewById<LinearLayout>(R.id.swipe_card_inner).setBackgroundResource(theme.cardBackground)
 
-        val today = DailyWord.today()
+        findViewById<ImageButton>(R.id.btn_swipe_left).background?.mutate()?.setTint(accent)
+
+        val today = DailyWord.today(this)
         val word = today.word
-
         findViewById<TextView>(R.id.card_day).apply {
             text = today.dayLabel
             setTextColor(inkSoft)
@@ -116,6 +138,42 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<TextView>(R.id.card_example).apply {
             text = "“${word.example}”"
+            setTextColor(inkSoft)
+            typeface = bodyTypeface
+        }
+
+        bindPracticeCard(theme)
+    }
+
+    private fun bindPracticeCard(theme: AppTheme) {
+        val practice = currentPractice ?: return
+        val ink = ContextCompat.getColor(this, theme.ink)
+        val inkSoft = ContextCompat.getColor(this, theme.inkSoft)
+        val accent = ContextCompat.getColor(this, theme.accent)
+        val wordTypeface = ResourcesCompat.getFont(this, theme.wordFont) ?: Typeface.DEFAULT_BOLD
+        val bodyTypeface = ResourcesCompat.getFont(this, theme.bodyFont) ?: Typeface.DEFAULT
+
+        findViewById<TextView>(R.id.swipe_badge).apply {
+            setTextColor(accent)
+            typeface = bodyTypeface
+        }
+        findViewById<TextView>(R.id.swipe_word).apply {
+            text = practice.word
+            setTextColor(ink)
+            typeface = wordTypeface
+        }
+        findViewById<TextView>(R.id.swipe_meaning).apply {
+            text = practice.meaning
+            setTextColor(inkSoft)
+            typeface = bodyTypeface
+        }
+        findViewById<TextView>(R.id.swipe_root).apply {
+            text = "${practice.root} · ${practice.rootMeaning}"
+            setTextColor(accent)
+            typeface = bodyTypeface
+        }
+        findViewById<TextView>(R.id.swipe_example).apply {
+            text = "“${practice.example}”"
             setTextColor(inkSoft)
             typeface = bodyTypeface
         }

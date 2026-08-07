@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.VocabDaily" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/grove_accent</item>
-        <item name="android:statusBarColor">@color/grove_page</item>
-        <item name="android:navigationBarColor">@color/grove_page</item>
-        <item name="android:windowBackground">@color/grove_page</item>
+    <style name="Theme.VocabDaily" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/coast_accent</item>
+        <item name="android:statusBarColor">@color/coast_page</item>
+        <item name="android:navigationBarColor">@color/coast_page</item>
+        <item name="android:windowBackground">@color/coast_page</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

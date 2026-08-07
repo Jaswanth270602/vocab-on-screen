@@ -7,6 +7,7 @@ enum class AppTheme(
     val title: String,
     val subtitle: String,
     val widgetLayout: Int,
+    val widgetLayoutCompact: Int,
     val cardBackground: Int,
     val pageBg: Int,
     val titleColor: Int,
@@ -21,8 +22,9 @@ enum class AppTheme(
     GROVE(
         id = "grove",
         title = "Grove",
-        subtitle = "Forest card · clean sans",
+        subtitle = "Soft glass green · clean sans",
         widgetLayout = R.layout.widget_theme_grove,
+        widgetLayoutCompact = R.layout.widget_theme_grove_compact,
         cardBackground = R.drawable.bg_card_grove,
         pageBg = R.color.grove_page,
         titleColor = R.color.grove_fog,
@@ -37,8 +39,9 @@ enum class AppTheme(
     INK(
         id = "ink",
         title = "Ink",
-        subtitle = "Paper study · literary serif",
+        subtitle = "Glass paper · literary serif",
         widgetLayout = R.layout.widget_theme_ink,
+        widgetLayoutCompact = R.layout.widget_theme_ink_compact,
         cardBackground = R.drawable.bg_card_ink,
         pageBg = R.color.ink_page,
         titleColor = R.color.ink_fog,
@@ -53,8 +56,9 @@ enum class AppTheme(
     COAST(
         id = "coast",
         title = "Coast",
-        subtitle = "Bright air · modern mix",
+        subtitle = "Sky glass · wallpaper shows through",
         widgetLayout = R.layout.widget_theme_coast,
+        widgetLayoutCompact = R.layout.widget_theme_coast_compact,
         cardBackground = R.drawable.bg_card_coast,
         pageBg = R.color.coast_page,
         titleColor = R.color.coast_fog,
@@ -67,9 +71,19 @@ enum class AppTheme(
         bodyFont = R.font.dm_sans_regular,
     );
 
+    fun layoutForHeightDp(minHeightDp: Int): Int =
+        if (minHeightDp > 0 && minHeightDp < COMPACT_MAX_HEIGHT_DP) {
+            widgetLayoutCompact
+        } else {
+            widgetLayout
+        }
+
     companion object {
+        /** Below this height (dp), use the compact card layout. */
+        const val COMPACT_MAX_HEIGHT_DP = 140
+
         fun fromId(id: String?): AppTheme =
-            entries.firstOrNull { it.id == id } ?: GROVE
+            entries.firstOrNull { it.id == id } ?: COAST
     }
 }
 
@@ -79,7 +93,7 @@ object ThemePrefs {
 
     fun get(context: Context): AppTheme {
         val id = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-            .getString(KEY_THEME, AppTheme.GROVE.id)
+            .getString(KEY_THEME, AppTheme.COAST.id)
         return AppTheme.fromId(id)
     }
 
