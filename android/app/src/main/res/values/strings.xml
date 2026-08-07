@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vocab Daily</string>
+    <string name="widget_name">Vocab Daily card</string>
+    <string name="widget_description">Today’s vocabulary word on your home screen</string>
+    <string name="widget_eyebrow">Word of the day</string>
+    <string name="main_tagline">One shared word each day · works offline</string>
+    <string name="main_instructions">Add the home-screen card:\n\n1. Long-press an empty spot on your home screen\n2. Tap Widgets\n3. Find Vocab Daily card and place it\n\nThe word updates every UTC day — no internet needed.\n\nInstalled from APK (no Play Store required).</string>
+    <string name="main_refresh">Refresh home widget</string>
+</resources>
