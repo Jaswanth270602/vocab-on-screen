@@ -5,6 +5,13 @@
     <string name="widget_description">Today’s vocabulary word on your home screen</string>
     <string name="widget_eyebrow">Word of the day</string>
     <string name="main_tagline">One shared word each day · works offline</string>
-    <string name="main_instructions">Add the home-screen card:\n\n1. Long-press an empty spot on your home screen\n2. Tap Widgets\n3. Find Vocab Daily card and place it\n\nThe word updates every UTC day — no internet needed.\n\nInstalled from APK (no Play Store required).</string>
+    <string name="main_instructions">Add the home-screen card:\n\n1. Long-press an empty spot on your home screen\n2. Tap Widgets\n3. Find Vocab Daily card and place it\n\nPick a theme above — the widget updates to match.\nThe word changes every UTC day.</string>
     <string name="main_refresh">Refresh home widget</string>
+    <string name="theme_label">Theme</string>
+    <string name="theme_grove">Grove</string>
+    <string name="theme_grove_sub">Forest card · clean sans (DM Sans)</string>
+    <string name="theme_ink">Ink</string>
+    <string name="theme_ink_sub">Paper study · literary serif (Literata)</string>
+    <string name="theme_coast">Coast</string>
+    <string name="theme_coast_sub">Bright air · serif word + modern sans</string>
 </resources>

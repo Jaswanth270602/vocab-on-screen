@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,16 +23,52 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          build-root-directory: android
+          cache-read-only: false
+
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: true
+          log-accepted-android-sdk-licenses: false
+          packages: >-
+            tools
+            platform-tools
+            platforms;android-35
+            build-tools;35.0.0
 
-      - name: Make gradlew executable
-        working-directory: android
-        run: chmod +x gradlew
+      - name: Accept SDK licenses (non-interactive)
+        run: |
+          set -e
+          mkdir -p "$ANDROID_HOME/licenses"
+          printf '%s\n' \
+            "24333be8ee4fb25b277c0631d45cae574aeba3f9" \
+            "d56f5187479451eabf01fb78af6dfcb131a6481e" \
+            "24333be8ee4fb25b277c0631d45cae574aeba3f9" \
+            > "$ANDROID_HOME/licenses/android-sdk-license"
+          printf '%s\n' "84831b9409646a918e30573bab4c9c91346d8abd" \
+            > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+          yes | sdkmanager --licenses >/dev/null || true
 
       - name: Build release APK
         working-directory: android
-        run: ./gradlew assembleRelease --no-daemon
+        env:
+          # Avoid interactive hangs / daemon memory issues on CI runners
+          GRADLE_OPTS: >-
+            -Dorg.gradle.daemon=false
+            -Dorg.gradle.workers.max=2
+            -Dkotlin.compiler.execution.strategy=in-process
+            -Dfile.encoding=UTF-8
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease \
+            --no-daemon \
+            --no-watch-fs \
+            --stacktrace \
+            --console=plain
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -38,3 +76,4 @@ jobs:
           name: vocab-daily-apk
           path: android/app/build/outputs/apk/release/*.apk
           if-no-files-found: error
+          retention-days: 14

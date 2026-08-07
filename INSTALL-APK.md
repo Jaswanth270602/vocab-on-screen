@@ -10,6 +10,8 @@
 
 Or push to GitHub → **Actions → Build Android APK** → download the artifact.
 
+If a run sits past ~10 minutes with no new log lines: **Cancel** it, pull the latest workflow fix, push again, and re-run. First successful build is often 3–8 minutes; later runs are faster with cache.
+
 ## Students — install & add widget
 
 1. Open the APK on an **Android** phone → **Install**  

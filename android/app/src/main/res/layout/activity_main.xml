@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/page_bg"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,27 +12,121 @@
         android:padding="24dp">
 
         <TextView
+            android:id="@+id/main_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/app_name"
-            android:textColor="@color/fog"
             android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/main_tagline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/main_tagline"
-            android:textColor="@color/accent_soft"
             android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/theme_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/theme_label"
+            android:textAllCaps="true"
+            android:letterSpacing="0.08"
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/widget_background"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/theme_grove"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_theme_chip"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/theme_grove_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_grove"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/theme_grove_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/theme_grove_sub"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/theme_ink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_theme_chip"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/theme_ink_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_ink"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/theme_ink_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/theme_ink_sub"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/theme_coast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_theme_chip"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:id="@+id/theme_coast_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/theme_coast"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/theme_coast_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/theme_coast_sub"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/preview_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -46,26 +140,24 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/ink_soft"
                     android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/card_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/accent"
                     android:textSize="12sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
+                android:id="@+id/card_eyebrow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:letterSpacing="0.08"
                 android:text="@string/widget_eyebrow"
                 android:textAllCaps="true"
-                android:textColor="@color/ink_soft"
                 android:textSize="11sp" />
 
             <TextView
@@ -73,7 +165,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/ink"
                 android:textSize="34sp"
                 android:textStyle="bold" />
 
@@ -82,7 +173,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/ink_soft"
                 android:textSize="16sp" />
 
             <TextView
@@ -90,7 +180,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:textColor="@color/accent"
                 android:textSize="14sp"
                 android:textStyle="italic" />
 
@@ -99,18 +188,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:textColor="@color/ink_soft"
                 android:textSize="14sp" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/main_instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:lineSpacingExtra="4dp"
             android:text="@string/main_instructions"
-            android:textColor="@color/fog"
-            android:textSize="15sp"
-            android:lineSpacingExtra="4dp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/main_refresh_widget"

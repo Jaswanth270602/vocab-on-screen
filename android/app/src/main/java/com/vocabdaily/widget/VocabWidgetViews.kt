@@ -9,8 +9,9 @@ import android.widget.RemoteViews
 
 object VocabWidgetViews {
     fun content(context: Context, today: TodayCard = DailyWord.today()): RemoteViews {
+        val theme = ThemePrefs.get(context)
         val word = today.word
-        return RemoteViews(context.packageName, R.layout.widget_vocab).apply {
+        return RemoteViews(context.packageName, theme.widgetLayout).apply {
             setTextViewText(R.id.widget_day, today.dayLabel)
             setTextViewText(R.id.widget_count, today.dayNumber)
             setTextViewText(R.id.widget_word, word.word)

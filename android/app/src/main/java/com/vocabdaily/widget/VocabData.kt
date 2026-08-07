@@ -1,5 +1,10 @@
 package com.vocabdaily.widget
 
+/**
+ * Paste more words here. Format guide: ADD-WORDS.md in the project root.
+ *
+ * VocabWord(ID, "word", "meaning", "root", "root meaning", "Example sentence."),
+ */
 data class VocabWord(
     val id: Int,
     val word: String,
@@ -11,6 +16,7 @@ data class VocabWord(
 
 object VocabData {
     val words: List<VocabWord> = listOf(
+    // --- existing words (keep) ---
     VocabWord(1, "inspect", "to look at something carefully", "spect", "to look", "The mechanic will inspect the engine before the trip."),
     VocabWord(2, "respect", "to admire someone; regard earned by behavior", "spect", "to look", "She earned the team's respect through steady work."),
     VocabWord(3, "prospect", "the chance of something happening; a possible future", "spect", "to look", "The prospect of rain cancelled the picnic."),
@@ -61,5 +67,8 @@ object VocabData {
     VocabWord(48, "telegraph", "an old system for sending messages over wires", "graph", "to write", "News once traveled by telegraph across oceans."),
     VocabWord(49, "paragraph", "a group of sentences about one idea", "graph", "to write", "Start a new paragraph when the topic shifts."),
     VocabWord(50, "graphic", "related to visual art; vividly detailed", "graph", "to write", "The report included a clear graphic of the data."),
+
+    // --- paste new words below (see ADD-WORDS.md) ---
+    // VocabWord(51, "word", "meaning", "root", "root meaning", "Example sentence."),
     )
 }
