@@ -1,7 +1,9 @@
 package com.vocabdaily.widget
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -13,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.ColorUtils
 
 class MainActivity : AppCompatActivity() {
     private val vocabDeck = RandomDeck()
@@ -48,11 +51,17 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btn_swipe_left).setOnClickListener {
             vocabSwipe.animateSwipeLeft()
         }
+        findViewById<LinearLayout>(R.id.practice_action_row).setOnClickListener {
+            vocabSwipe.animateSwipeLeft()
+        }
 
         val bankSwipe = findViewById<SwipeCardView>(R.id.bank_swipe_card)
         bankSwipe.preferredDirection = SwipeDirection.RIGHT
         bankSwipe.onSwiped = { showNextBank(animateIn = true) }
         findViewById<ImageButton>(R.id.btn_swipe_right).setOnClickListener {
+            bankSwipe.animateSwipeRight()
+        }
+        findViewById<LinearLayout>(R.id.bank_action_row).setOnClickListener {
             bankSwipe.animateSwipeRight()
         }
 
@@ -113,6 +122,7 @@ class MainActivity : AppCompatActivity() {
 
         val wordTypeface = ResourcesCompat.getFont(this, theme.wordFont) ?: Typeface.DEFAULT_BOLD
         val bodyTypeface = ResourcesCompat.getFont(this, theme.bodyFont) ?: Typeface.DEFAULT
+        val darkPage = theme != AppTheme.COAST
 
         findViewById<ScrollView>(R.id.main_scroll).setBackgroundColor(pageBg)
 
@@ -125,19 +135,83 @@ class MainActivity : AppCompatActivity() {
 
         styleText(R.id.main_title, titleColor, wordTypeface)
         styleText(R.id.main_tagline, taglineColor, bodyTypeface)
-        styleText(R.id.today_label, taglineColor, bodyTypeface)
-        styleText(R.id.practice_label, taglineColor, bodyTypeface)
-        styleText(R.id.practice_hint, bodyColor, bodyTypeface)
-        styleText(R.id.swipe_left_label, titleColor, bodyTypeface)
-        styleText(R.id.bank_label, taglineColor, bodyTypeface)
-        styleText(R.id.bank_hint, bodyColor, bodyTypeface)
-        styleText(R.id.swipe_right_label, titleColor, bodyTypeface)
-        styleText(R.id.theme_label, taglineColor, bodyTypeface)
-        styleText(R.id.main_instructions, bodyColor, bodyTypeface)
 
-        val divider = (accent and 0x00FFFFFF) or 0x55000000
-        findViewById<View>(R.id.divider_bank_top).setBackgroundColor(divider)
-        findViewById<View>(R.id.divider_bank_bottom).setBackgroundColor(divider)
+        val sectionBg =
+            if (darkPage) R.drawable.bg_section_panel_dark else R.drawable.bg_section_panel
+        val actionBg =
+            if (darkPage) R.drawable.bg_action_row else R.drawable.bg_action_row_light
+
+        listOf(
+            R.id.section_today,
+            R.id.section_practice,
+            R.id.section_bank,
+            R.id.section_theme,
+            R.id.section_help,
+        ).forEach { findViewById<LinearLayout>(it).setBackgroundResource(sectionBg) }
+
+        findViewById<LinearLayout>(R.id.practice_action_row).setBackgroundResource(actionBg)
+        findViewById<LinearLayout>(R.id.bank_action_row).setBackgroundResource(actionBg)
+
+        styleSectionHeader(
+            indexId = R.id.today_index,
+            labelId = R.id.today_label,
+            hintId = R.id.today_hint,
+            barId = R.id.today_accent_bar,
+            accent = accent,
+            titleColor = titleColor,
+            bodyColor = bodyColor,
+            wordTypeface = wordTypeface,
+            bodyTypeface = bodyTypeface,
+        )
+        styleSectionHeader(
+            indexId = R.id.practice_index,
+            labelId = R.id.practice_label,
+            hintId = R.id.practice_hint,
+            barId = R.id.practice_accent_bar,
+            accent = accent,
+            titleColor = titleColor,
+            bodyColor = bodyColor,
+            wordTypeface = wordTypeface,
+            bodyTypeface = bodyTypeface,
+        )
+        styleSectionHeader(
+            indexId = R.id.bank_index,
+            labelId = R.id.bank_label,
+            hintId = R.id.bank_hint,
+            barId = R.id.bank_accent_bar,
+            accent = accent,
+            titleColor = titleColor,
+            bodyColor = bodyColor,
+            wordTypeface = wordTypeface,
+            bodyTypeface = bodyTypeface,
+        )
+        styleSectionHeader(
+            indexId = R.id.theme_index,
+            labelId = R.id.theme_label,
+            hintId = R.id.theme_hint,
+            barId = R.id.theme_accent_bar,
+            accent = accent,
+            titleColor = titleColor,
+            bodyColor = bodyColor,
+            wordTypeface = wordTypeface,
+            bodyTypeface = bodyTypeface,
+        )
+        styleSectionHeader(
+            indexId = R.id.help_index,
+            labelId = R.id.help_label,
+            hintId = R.id.main_instructions,
+            barId = R.id.help_accent_bar,
+            accent = accent,
+            titleColor = titleColor,
+            bodyColor = bodyColor,
+            wordTypeface = wordTypeface,
+            bodyTypeface = bodyTypeface,
+        )
+
+        styleText(R.id.swipe_left_label, titleColor, bodyTypeface)
+        styleText(R.id.swipe_left_hint, bodyColor, bodyTypeface)
+        styleText(R.id.swipe_right_label, titleColor, bodyTypeface)
+        styleText(R.id.swipe_right_hint, bodyColor, bodyTypeface)
 
         val chipNormal =
             if (theme == AppTheme.COAST) R.drawable.bg_theme_chip_dark else R.drawable.bg_theme_chip
@@ -154,6 +228,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.btn_swipe_left).background?.mutate()?.setTint(accent)
         findViewById<ImageButton>(R.id.btn_swipe_right).background?.mutate()?.setTint(accent)
+        findViewById<View>(R.id.bank_prompt_bar).background?.mutate()?.setTint(accent)
 
         val today = DailyWord.today(this)
         val word = today.word
@@ -196,6 +271,47 @@ class MainActivity : AppCompatActivity() {
         bindBankCard(theme)
     }
 
+    private fun styleSectionHeader(
+        indexId: Int,
+        labelId: Int,
+        hintId: Int,
+        barId: Int,
+        accent: Int,
+        titleColor: Int,
+        bodyColor: Int,
+        wordTypeface: Typeface,
+        bodyTypeface: Typeface,
+    ) {
+        findViewById<View>(barId).background = accentBar(accent)
+        findViewById<TextView>(indexId).apply {
+            setTextColor(accent)
+            typeface = bodyTypeface
+            background = indexChip(accent)
+        }
+        findViewById<TextView>(labelId).apply {
+            setTextColor(titleColor)
+            typeface = wordTypeface
+        }
+        findViewById<TextView>(hintId).apply {
+            setTextColor(bodyColor)
+            typeface = bodyTypeface
+        }
+    }
+
+    private fun accentBar(accent: Int): GradientDrawable =
+        GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            cornerRadius = 8f * resources.displayMetrics.density
+            setColor(accent)
+        }
+
+    private fun indexChip(accent: Int): GradientDrawable =
+        GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            cornerRadius = 10f * resources.displayMetrics.density
+            setColor(ColorUtils.setAlphaComponent(accent, 40))
+        }
+
     private fun bindVocabCard(theme: AppTheme) {
         val practice = currentVocab ?: return
         val ink = ContextCompat.getColor(this, theme.ink)
@@ -207,6 +323,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.swipe_badge).apply {
             setTextColor(accent)
             typeface = bodyTypeface
+            backgroundTintList = ColorStateList.valueOf(ColorUtils.setAlphaComponent(accent, 36))
         }
         findViewById<TextView>(R.id.swipe_word).apply {
             text = practice.word
@@ -248,6 +365,7 @@ class MainActivity : AppCompatActivity() {
             text = kindLabel
             setTextColor(accent)
             typeface = bodyTypeface
+            backgroundTintList = ColorStateList.valueOf(ColorUtils.setAlphaComponent(accent, 36))
         }
         findViewById<TextView>(R.id.bank_prompt).apply {
             text = item.prompt

@@ -11,8 +11,8 @@ android {
         applicationId = "com.vocabdaily.widget"
         minSdk = 26
         targetSdk = 35
-        versionCode = 10
-        versionName = "1.4.0"
+        versionCode = 12
+        versionName = "1.4.2"
     }
 
     buildTypes {

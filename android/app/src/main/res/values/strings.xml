@@ -5,28 +5,43 @@
     <string name="widget_description">Today’s vocabulary word on your home screen</string>
     <string name="widget_eyebrow">Word of the day</string>
     <string name="widget_root_caption">Root</string>
-    <string name="main_tagline">Daily word on the widget · swipe random words in the app</string>
+    <string name="main_tagline">Home widget for the day · practice decks inside</string>
+
+    <string name="today_index">01</string>
     <string name="today_label">Today’s word</string>
-    <string name="practice_label">Practice · random swipe</string>
-    <string name="practice_hint">Swipe the card left (or tap the arrow) for another random word — not in daily order.</string>
-    <string name="practice_badge">Random practice</string>
-    <string name="swipe_left_label">Swipe left for next</string>
+    <string name="today_hint">Same word as your home widget. Advances at local midnight.</string>
+
+    <string name="practice_index">02</string>
+    <string name="practice_label">Vocabulary practice</string>
+    <string name="practice_hint">Swipe left for a random word from the full bank — not daily order.</string>
+    <string name="practice_badge">Random word</string>
+    <string name="swipe_left_label">Swipe left</string>
+    <string name="swipe_left_hint">or tap the arrow</string>
     <string name="swipe_left_cd">Swipe left to next random word</string>
-    <string name="bank_label">Idioms · Phrasals · One-word</string>
-    <string name="bank_hint">Swipe right for exam-style idioms, phrasal verbs, and one-word substitutes.</string>
-    <string name="swipe_right_label">Swipe right for next</string>
+
+    <string name="bank_index">03</string>
+    <string name="bank_label">Exam bank</string>
+    <string name="bank_hint">Idioms, phrasal verbs, and one-word substitutes — swipe right.</string>
+    <string name="swipe_right_label">Swipe right</string>
+    <string name="swipe_right_hint">or tap the arrow</string>
     <string name="swipe_right_cd">Swipe right to next practice item</string>
     <string name="kind_idiom">Idiom</string>
     <string name="kind_phrasal">Phrasal verb</string>
     <string name="kind_one_word">One-word substitute</string>
-    <string name="main_instructions">Home widget = one new word each day (starts at word 1, then loops).\n\nIn the app: swipe left for random vocabulary, swipe right for idioms / phrasals / one-word substitutes.</string>
-    <string name="main_refresh">Refresh home widget</string>
-    <string name="contact_developer">Contact developer</string>
-    <string name="theme_label">Theme</string>
+
+    <string name="theme_index">04</string>
+    <string name="theme_label">Appearance</string>
+    <string name="theme_hint">Pick a look for the app and home widget.</string>
     <string name="theme_grove">Grove</string>
     <string name="theme_grove_sub">Soft glass green · DM Sans</string>
     <string name="theme_ink">Ink</string>
     <string name="theme_ink_sub">Glass paper · Literata serif</string>
     <string name="theme_coast">Coast</string>
     <string name="theme_coast_sub">Sky white + sky blue glass · best with wallpaper</string>
+
+    <string name="help_index">05</string>
+    <string name="help_label">How it works</string>
+    <string name="main_instructions">Widget: one new word each day from day 1, then loops.\n\nApp: left swipe = random vocab · right swipe = idioms / phrasals / one-word.</string>
+    <string name="main_refresh">Refresh home widget</string>
+    <string name="contact_developer">Contact developer</string>
 </resources>

@@ -3,368 +3,580 @@
     android:id="@+id/main_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingStart="16dp"
-        android:paddingTop="16dp"
+        android:paddingTop="20dp"
         android:paddingEnd="16dp"
-        android:paddingBottom="28dp">
+        android:paddingBottom="36dp">
 
+        <!-- Brand header -->
         <TextView
             android:id="@+id/main_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/app_name"
-            android:textSize="30sp"
+            android:textSize="32sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/main_tagline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
             android:text="@string/main_tagline"
             android:textSize="14sp" />
 
-        <!-- Today's word (from widget / daily streak) -->
-        <TextView
-            android:id="@+id/today_label"
+        <!-- 01 Today -->
+        <LinearLayout
+            android:id="@+id/section_today"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="22dp"
-            android:letterSpacing="0.08"
-            android:text="@string/today_label"
-            android:textAllCaps="true"
-            android:textSize="12sp" />
-
-        <LinearLayout
-            android:id="@+id/preview_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_section_panel"
             android:orientation="vertical"
-            android:paddingStart="20dp"
-            android:paddingTop="18dp"
-            android:paddingEnd="20dp"
-            android:paddingBottom="20dp">
+            android:padding="14dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/card_day"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textSize="12sp" />
+                <View
+                    android:id="@+id/today_accent_bar"
+                    android:layout_width="4dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_root_bar" />
 
                 <TextView
-                    android:id="@+id/card_count"
+                    android:id="@+id/today_index"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/card_eyebrow"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:letterSpacing="0.08"
-                android:text="@string/widget_eyebrow"
-                android:textAllCaps="true"
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/card_word"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/card_meaning"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/card_root"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="13sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/card_example"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-        <!-- Random swipe practice -->
-        <TextView
-            android:id="@+id/practice_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:letterSpacing="0.08"
-            android:text="@string/practice_label"
-            android:textAllCaps="true"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/practice_hint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/practice_hint"
-            android:textSize="13sp" />
-
-        <com.vocabdaily.widget.SwipeCardView
-            android:id="@+id/swipe_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:minHeight="260dp">
-
-            <LinearLayout
-                android:id="@+id/swipe_card_inner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="260dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/swipe_badge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:letterSpacing="0.1"
-                    android:text="@string/practice_badge"
-                    android:textAllCaps="true"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:id="@+id/swipe_word"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="34sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/swipe_meaning"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/swipe_root"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:textSize="14sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/swipe_example"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </com.vocabdaily.widget.SwipeCardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btn_swipe_left"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
-                android:background="@drawable/bg_swipe_arrow"
-                android:contentDescription="@string/swipe_left_cd"
-                android:padding="16dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_swipe_left" />
-
-            <TextView
-                android:id="@+id/swipe_left_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/swipe_left_label"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <View
-            android:id="@+id/divider_bank_top"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/bg_section_divider" />
-
-        <TextView
-            android:id="@+id/bank_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:letterSpacing="0.08"
-            android:text="@string/bank_label"
-            android:textAllCaps="true"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/bank_hint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/bank_hint"
-            android:textSize="13sp" />
-
-        <com.vocabdaily.widget.SwipeCardView
-            android:id="@+id/bank_swipe_card"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:minHeight="240dp">
-
-            <LinearLayout
-                android:id="@+id/bank_card_inner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="240dp"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/bank_kind"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_kind_chip"
-                    android:paddingStart="10dp"
-                    android:paddingTop="4dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="4dp"
-                    android:textAllCaps="true"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_section_index"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/today_index"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/bank_prompt"
+                    android:id="@+id/today_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.04"
+                    android:text="@string/today_label"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/today_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/today_hint"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/preview_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="18dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:textSize="22sp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/card_day"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/card_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/card_eyebrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:letterSpacing="0.08"
+                    android:text="@string/widget_eyebrow"
+                    android:textAllCaps="true"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/card_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
-                <View
-                    android:layout_width="40dp"
-                    android:layout_height="3dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_root_bar" />
-
                 <TextView
-                    android:id="@+id/bank_meaning"
+                    android:id="@+id/card_meaning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:textSize="16sp" />
+                    android:layout_marginTop="6dp"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/bank_example"
+                    android:id="@+id/card_root"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:textSize="13sp"
                     android:textStyle="italic" />
 
                 <TextView
-                    android:id="@+id/bank_progress"
+                    android:id="@+id/card_example"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:textSize="11sp" />
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp" />
             </LinearLayout>
-        </com.vocabdaily.widget.SwipeCardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btn_swipe_right"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
-                android:background="@drawable/bg_swipe_arrow"
-                android:contentDescription="@string/swipe_right_cd"
-                android:padding="16dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_swipe_right" />
-
-            <TextView
-                android:id="@+id/swipe_right_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/swipe_right_label"
-                android:textSize="13sp"
-                android:textStyle="bold" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/divider_bank_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/bg_section_divider" />
-
-        <TextView
-            android:id="@+id/theme_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:letterSpacing="0.08"
-            android:text="@string/theme_label"
-            android:textAllCaps="true"
-            android:textSize="12sp" />
-
+        <!-- 02 Vocabulary practice (left swipe) -->
         <LinearLayout
+            android:id="@+id/section_practice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_section_panel"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/practice_accent_bar"
+                    android:layout_width="4dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_root_bar" />
+
+                <TextView
+                    android:id="@+id/practice_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_section_index"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/practice_index"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/practice_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.04"
+                    android:text="@string/practice_label"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/practice_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/practice_hint"
+                android:textSize="12sp" />
+
+            <com.vocabdaily.widget.SwipeCardView
+                android:id="@+id/swipe_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="220dp">
+
+                <LinearLayout
+                    android:id="@+id/swipe_card_inner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="220dp"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:id="@+id/swipe_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_kind_chip"
+                        android:letterSpacing="0.08"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/practice_badge"
+                        android:textAllCaps="true"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/swipe_word"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/swipe_meaning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/swipe_root"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/swipe_example"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </com.vocabdaily.widget.SwipeCardView>
+
+            <LinearLayout
+                android:id="@+id/practice_action_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_action_row_light"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="10dp">
+
+                <ImageButton
+                    android:id="@+id/btn_swipe_left"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_swipe_arrow"
+                    android:contentDescription="@string/swipe_left_cd"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_swipe_left" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/swipe_left_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/swipe_left_label"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/swipe_left_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/swipe_left_hint"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 03 Exam bank (right swipe) -->
+        <LinearLayout
+            android:id="@+id/section_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_section_panel"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/bank_accent_bar"
+                    android:layout_width="4dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_root_bar" />
+
+                <TextView
+                    android:id="@+id/bank_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_section_index"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/bank_index"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/bank_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.04"
+                    android:text="@string/bank_label"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bank_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/bank_hint"
+                android:textSize="12sp" />
+
+            <com.vocabdaily.widget.SwipeCardView
+                android:id="@+id/bank_swipe_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="200dp">
+
+                <LinearLayout
+                    android:id="@+id/bank_card_inner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bank_kind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_kind_chip"
+                            android:paddingStart="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="4dp"
+                            android:textAllCaps="true"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/bank_progress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/bank_prompt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/bank_prompt_bar"
+                        android:layout_width="36dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_root_bar" />
+
+                    <TextView
+                        android:id="@+id/bank_meaning"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/bank_example"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+            </com.vocabdaily.widget.SwipeCardView>
+
+            <LinearLayout
+                android:id="@+id/bank_action_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_action_row_light"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/swipe_right_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/swipe_right_label"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/swipe_right_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/swipe_right_hint"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_swipe_right"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_swipe_arrow"
+                    android:contentDescription="@string/swipe_right_cd"
+                    android:padding="12dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_swipe_right" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 04 Appearance -->
+        <LinearLayout
+            android:id="@+id/section_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_section_panel"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/theme_accent_bar"
+                    android:layout_width="4dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_root_bar" />
+
+                <TextView
+                    android:id="@+id/theme_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_section_index"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/theme_index"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/theme_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.04"
+                    android:text="@string/theme_label"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/theme_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/theme_hint"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:id="@+id/theme_grove"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/bg_theme_chip"
                 android:orientation="vertical"
                 android:padding="14dp">
@@ -439,29 +651,77 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/main_instructions"
+        <!-- 05 Help + actions -->
+        <LinearLayout
+            android:id="@+id/section_help"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:lineSpacingExtra="4dp"
-            android:text="@string/main_instructions"
-            android:textSize="14sp" />
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_section_panel"
+            android:orientation="vertical"
+            android:padding="14dp">
 
-        <Button
-            android:id="@+id/main_refresh_widget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/main_refresh" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btn_contact_developer"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="28dp"
-            android:text="@string/contact_developer" />
+                <View
+                    android:id="@+id/help_accent_bar"
+                    android:layout_width="4dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_root_bar" />
+
+                <TextView
+                    android:id="@+id/help_index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_section_index"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="@string/help_index"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/help_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.04"
+                    android:text="@string/help_label"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/main_instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/main_instructions"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/main_refresh_widget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/main_refresh" />
+
+            <Button
+                android:id="@+id/btn_contact_developer"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/contact_developer" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

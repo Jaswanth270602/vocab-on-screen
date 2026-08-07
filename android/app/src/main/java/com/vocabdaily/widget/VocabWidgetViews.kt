@@ -9,7 +9,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import android.view.View
+import android.view.Gravity
 import android.widget.RemoteViews
 
 object VocabWidgetViews {
@@ -31,8 +31,9 @@ object VocabWidgetViews {
 
             val minWidth = options?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH, 0) ?: 0
             val minHeight = options?.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, 0) ?: 0
+            // Short cells → compact layout. Default / medium → full card (content-sized).
             val layout =
-                if (minHeight in 1 until 160) R.layout.widget_vocab_compact
+                if (minHeight in 1 until 135) R.layout.widget_vocab_compact
                 else R.layout.widget_vocab
 
             val countChip = when (theme) {
@@ -64,7 +65,12 @@ object VocabWidgetViews {
                 setTextColor(R.id.widget_etymology, accent)
                 setTextColor(R.id.widget_example, muted)
 
-                applyResponsiveSizing(context, minWidth, minHeight, layout == R.layout.widget_vocab_compact)
+                applyResponsiveSizing(
+                    context,
+                    minWidth,
+                    minHeight,
+                    layout == R.layout.widget_vocab_compact,
+                )
 
                 setOnClickPendingIntent(R.id.widget_root, openAppPendingIntent(context))
             }
@@ -75,8 +81,9 @@ object VocabWidgetViews {
     }
 
     /**
-     * Scale padding / type / line counts from the launcher cell size so the card
-     * uses full width with comfortable margins on both small and large phones.
+     * Adapt type + padding to the actual launcher cell.
+     * Never stretch empty regions — keep content packed; if the user
+     * makes the cell taller, center vertically so gaps aren't all at the bottom.
      */
     private fun RemoteViews.applyResponsiveSizing(
         context: Context,
@@ -87,64 +94,60 @@ object VocabWidgetViews {
         val density = context.resources.displayMetrics.density
         fun dp(value: Int): Int = (value * density).toInt()
 
-        // Wider cells → more side padding so text never hugs the edges.
         val hPad = when {
-            minWidthDp >= 360 -> 22
-            minWidthDp >= 300 -> 18
-            minWidthDp >= 250 -> 16
-            minWidthDp > 0 -> 14
+            minWidthDp >= 360 -> 18
+            minWidthDp >= 300 -> 16
+            minWidthDp >= 240 -> 14
+            minWidthDp > 0 -> 12
             else -> 16
         }
-        val vPadTop = if (compact) 8 else if (minHeightDp >= 220) 14 else 12
-        val vPadBottom = if (compact) 8 else if (minHeightDp >= 220) 16 else 14
-        setViewPadding(R.id.widget_root, dp(hPad), dp(vPadTop), dp(hPad), dp(vPadBottom))
+        val vPad = when {
+            compact -> 8
+            minHeightDp in 1 until 160 -> 9
+            else -> 10
+        }
+        setViewPadding(R.id.widget_root, dp(hPad), dp(vPad), dp(hPad), dp(vPad))
+
+        // Pack to top for normal size; center only if user stretched the cell taller.
+        val gravity =
+            if (!compact && minHeightDp >= 190) Gravity.CENTER_VERTICAL
+            else Gravity.TOP
+        setInt(R.id.widget_root, "setGravity", gravity)
 
         if (compact) {
             setTextViewTextSize(R.id.widget_word, TypedValue.COMPLEX_UNIT_SP, 20f)
             setTextViewTextSize(R.id.widget_meaning, TypedValue.COMPLEX_UNIT_SP, 12f)
             setTextViewTextSize(R.id.widget_example, TypedValue.COMPLEX_UNIT_SP, 11f)
-            setInt(R.id.widget_example, "setMaxLines", 2)
+            setInt(R.id.widget_meaning, "setMaxLines", 2)
+            setInt(R.id.widget_example, "setMaxLines", 1)
             return
         }
 
         val wordSp = when {
-            minWidthDp >= 360 -> 32f
-            minWidthDp >= 300 -> 28f
-            minWidthDp >= 250 -> 26f
+            minWidthDp >= 340 -> 28f
+            minWidthDp >= 280 -> 26f
             else -> 24f
         }
-        val meaningSp = when {
-            minWidthDp >= 320 -> 15f
-            else -> 14f
-        }
-        val exampleSp = when {
-            minWidthDp >= 320 -> 13f
-            else -> 12f
-        }
-        val meaningLines = when {
-            minHeightDp >= 240 -> 4
-            minHeightDp >= 180 -> 3
-            else -> 2
-        }
-        val exampleLines = when {
-            minHeightDp >= 240 -> 4
-            minHeightDp >= 200 -> 3
-            else -> 2
-        }
+        val meaningSp = if (minWidthDp >= 300) 13.5f else 13f
+        val exampleSp = if (minWidthDp >= 300) 12.5f else 12f
+
+        // Prefer 2 lines so height stays close to content; allow 3 only if tall.
+        val meaningLines = if (minHeightDp >= 190) 3 else 2
+        val exampleLines = if (minHeightDp >= 190) 3 else 2
 
         setTextViewTextSize(R.id.widget_word, TypedValue.COMPLEX_UNIT_SP, wordSp)
         setTextViewTextSize(R.id.widget_meaning, TypedValue.COMPLEX_UNIT_SP, meaningSp)
         setTextViewTextSize(R.id.widget_example, TypedValue.COMPLEX_UNIT_SP, exampleSp)
-        setTextViewTextSize(R.id.widget_etymology, TypedValue.COMPLEX_UNIT_SP, if (minWidthDp >= 300) 14f else 13f)
+        setTextViewTextSize(
+            R.id.widget_etymology,
+            TypedValue.COMPLEX_UNIT_SP,
+            if (minWidthDp >= 300) 12.5f else 12f,
+        )
 
         setInt(R.id.widget_meaning, "setMaxLines", meaningLines)
         setInt(R.id.widget_example, "setMaxLines", exampleLines)
-        setInt(R.id.widget_etymology, "setMaxLines", if (minWidthDp >= 280) 2 else 1)
-
-        // Keep example visible: give it remaining vertical space on taller cells.
-        if (minHeightDp >= 180) {
-            setViewVisibility(R.id.widget_example, View.VISIBLE)
-        }
+        setInt(R.id.widget_etymology, "setMaxLines", 1)
+        setInt(R.id.widget_word, "setMaxLines", 1)
     }
 
     fun push(context: Context, appWidgetIds: IntArray) {
